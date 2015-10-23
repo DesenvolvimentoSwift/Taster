@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		640DD2111BDAB6890053E2BE /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2101BDAB6890053E2BE /* Food.swift */; settings = {ASSET_TAGS = (); }; };
 		64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE301BDA7AE400408A50 /* AppDelegate.swift */; };
 		64EFBE331BDA7AE400408A50 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE321BDA7AE400408A50 /* FirstViewController.swift */; };
 		64EFBE351BDA7AE400408A50 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE341BDA7AE400408A50 /* SecondViewController.swift */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
+		640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInsertViewController.swift; sourceTree = "<group>"; };
+		640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
+		640DD2101BDAB6890053E2BE /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		64EFBE2D1BDA7AE400408A50 /* Taster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EFBE301BDA7AE400408A50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EFBE321BDA7AE400408A50 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +114,10 @@
 				64EFBE391BDA7AE400408A50 /* Assets.xcassets */,
 				64EFBE3B1BDA7AE400408A50 /* LaunchScreen.storyboard */,
 				64EFBE3E1BDA7AE400408A50 /* Info.plist */,
+				640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */,
+				640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */,
+				640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */,
+				640DD2101BDAB6890053E2BE /* Food.swift */,
 			);
 			path = Taster;
 			sourceTree = "<group>";
@@ -258,9 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				640DD2111BDAB6890053E2BE /* Food.swift in Sources */,
+				640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */,
+				640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */,
 				64EFBE351BDA7AE400408A50 /* SecondViewController.swift in Sources */,
 				64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */,
 				64EFBE331BDA7AE400408A50 /* FirstViewController.swift in Sources */,
+				640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +501,7 @@
 				64EFBE591BDA7AE400408A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64EFBE5A1BDA7AE400408A50 /* Build configuration list for PBXNativeTarget "TasterTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +510,7 @@
 				64EFBE5C1BDA7AE400408A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64EFBE5D1BDA7AE400408A50 /* Build configuration list for PBXNativeTarget "TasterUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +519,7 @@
 				64EFBE5F1BDA7AE400408A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
