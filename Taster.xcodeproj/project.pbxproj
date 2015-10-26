@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */; };
 		640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInsertViewController.swift; sourceTree = "<group>"; };
 		640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +90,7 @@
 		64EFBE241BDA7AE400408A50 = {
 			isa = PBXGroup;
 			children = (
+				0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */,
 				64EFBE2F1BDA7AE400408A50 /* Taster */,
 				64EFBE461BDA7AE400408A50 /* TasterTests */,
 				64EFBE511BDA7AE400408A50 /* TasterUITests */,
