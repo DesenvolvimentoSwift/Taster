@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Favorites-->
         <scene sceneID="Opk-fj-PZe">
             <objects>
                 <navigationController id="zE4-Mp-ivb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="3g6-KR-u2N"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star" selectedImage="star" id="3g6-KR-u2N"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NeS-wa-yKa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -223,7 +223,7 @@
         <scene sceneID="MHs-dl-8c5">
             <objects>
                 <navigationController id="LiM-pQ-yD3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="world" id="Uyo-6Z-kcu"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="world" selectedImage="world" id="Uyo-6Z-kcu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rS4-aY-IeS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
