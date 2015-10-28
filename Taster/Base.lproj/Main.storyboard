@@ -85,7 +85,13 @@
                             <outlet property="delegate" destination="FBM-OC-9m4" id="R4P-dA-y5m"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="LmG-tc-a28"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="LmG-tc-a28">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CyB-En-Qk4">
+                            <connections>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" id="eCZ-jT-ZRV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="c3n-f8-d85" kind="show" identifier="recentFoodDetail" id="Ybu-3D-vhw"/>
                     </connections>
@@ -165,7 +171,13 @@
                             <outlet property="delegate" destination="h6O-tW-iaW" id="6IB-xn-nah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="YkW-bN-6jK"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="YkW-bN-6jK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BnX-aa-n6y">
+                            <connections>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" id="qHy-QS-s2P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="Pcd-fP-MTl" id="UeV-zP-kav"/>
                         <segue destination="c3n-f8-d85" kind="show" identifier="searchFoodDetail" id="uMd-El-ULs"/>
@@ -258,14 +270,20 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="b3y-Gi-KQr"/>
+                    <navigationItem key="navigationItem" id="b3y-Gi-KQr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="J6G-mZ-PdP">
+                            <connections>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" id="JXK-sw-dJp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="c3n-f8-d85" kind="show" identifier="mapFoodDetail" id="bXy-lQ-Fka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCv-lm-Syr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-307" y="983"/>
+            <point key="canvasLocation" x="-307" y="992"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="6SE-AV-Ppl">
@@ -357,7 +375,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1729" y="-501"/>
+            <point key="canvasLocation" x="-1025" y="-565"/>
         </scene>
         <!--Food Insert View Controller-->
         <scene sceneID="jge-br-Oct">
@@ -461,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pii-WE-MDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-347" y="-517"/>
+            <point key="canvasLocation" x="-307" y="1813"/>
         </scene>
         <!--Food Detail View Controller-->
         <scene sceneID="niU-BX-RNq">
@@ -523,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fx0-00-tu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1036" y="1740"/>
+            <point key="canvasLocation" x="-1729" y="1813"/>
         </scene>
     </scenes>
     <resources>
@@ -533,6 +551,7 @@
         <image name="world" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Box-Hp-FW6"/>
+        <segue reference="qHy-QS-s2P"/>
+        <segue reference="uMd-El-ULs"/>
     </inferredMetricsTieBreakers>
 </document>
