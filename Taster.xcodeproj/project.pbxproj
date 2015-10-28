@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */; };
-		640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		640DD2111BDAB6890053E2BE /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2101BDAB6890053E2BE /* Food.swift */; settings = {ASSET_TAGS = (); }; };
+		640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */; };
+		640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */; };
+		640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */; };
+		640DD2111BDAB6890053E2BE /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2101BDAB6890053E2BE /* Food.swift */; };
+		648F35DF1BE120560028D6C5 /* heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35DE1BE120560028D6C5 /* heart.pdf */; };
+		648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35E91BE12B930028D6C5 /* heart_filled.pdf */; };
 		64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE301BDA7AE400408A50 /* AppDelegate.swift */; };
 		64EFBE331BDA7AE400408A50 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE321BDA7AE400408A50 /* FirstViewController.swift */; };
 		64EFBE351BDA7AE400408A50 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE341BDA7AE400408A50 /* SecondViewController.swift */; };
@@ -45,6 +47,8 @@
 		640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInsertViewController.swift; sourceTree = "<group>"; };
 		640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		640DD2101BDAB6890053E2BE /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		648F35DE1BE120560028D6C5 /* heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart.pdf; sourceTree = "<group>"; };
+		648F35E91BE12B930028D6C5 /* heart_filled.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart_filled.pdf; sourceTree = "<group>"; };
 		64EFBE2D1BDA7AE400408A50 /* Taster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EFBE301BDA7AE400408A50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EFBE321BDA7AE400408A50 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		648F35E01BE120680028D6C5 /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				648F35E91BE12B930028D6C5 /* heart_filled.pdf */,
+				648F35DE1BE120560028D6C5 /* heart.pdf */,
+			);
+			name = imgs;
+			sourceTree = "<group>";
+		};
 		64EFBE241BDA7AE400408A50 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,7 @@
 		64EFBE2F1BDA7AE400408A50 /* Taster */ = {
 			isa = PBXGroup;
 			children = (
+				648F35E01BE120680028D6C5 /* imgs */,
 				64EFBE301BDA7AE400408A50 /* AppDelegate.swift */,
 				64EFBE321BDA7AE400408A50 /* FirstViewController.swift */,
 				64EFBE341BDA7AE400408A50 /* SecondViewController.swift */,
@@ -248,6 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64EFBE3D1BDA7AE400408A50 /* LaunchScreen.storyboard in Resources */,
+				648F35DF1BE120560028D6C5 /* heart.pdf in Resources */,
+				648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */,
 				64EFBE3A1BDA7AE400408A50 /* Assets.xcassets in Resources */,
 				64EFBE381BDA7AE400408A50 /* Main.storyboard in Resources */,
 			);
