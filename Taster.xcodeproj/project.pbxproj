@@ -12,6 +12,7 @@
 		640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */; };
 		640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */; };
 		640DD2111BDAB6890053E2BE /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2101BDAB6890053E2BE /* Food.swift */; };
+		64330A5F1BEE62A4003F3D08 /* star_yellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */; };
 		648F35DF1BE120560028D6C5 /* heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35DE1BE120560028D6C5 /* heart.pdf */; };
 		648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35E91BE12B930028D6C5 /* heart_filled.pdf */; };
 		64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE301BDA7AE400408A50 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInsertViewController.swift; sourceTree = "<group>"; };
 		640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		640DD2101BDAB6890053E2BE /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = star_yellow.pdf; sourceTree = "<group>"; };
 		648F35DE1BE120560028D6C5 /* heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart.pdf; sourceTree = "<group>"; };
 		648F35E91BE12B930028D6C5 /* heart_filled.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart_filled.pdf; sourceTree = "<group>"; };
 		64EFBE2D1BDA7AE400408A50 /* Taster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 		648F35E01BE120680028D6C5 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */,
 				648F35E91BE12B930028D6C5 /* heart_filled.pdf */,
 				648F35DE1BE120560028D6C5 /* heart.pdf */,
 			);
@@ -263,6 +266,7 @@
 			files = (
 				64EFBE3D1BDA7AE400408A50 /* LaunchScreen.storyboard in Resources */,
 				648F35DF1BE120560028D6C5 /* heart.pdf in Resources */,
+				64330A5F1BEE62A4003F3D08 /* star_yellow.pdf in Resources */,
 				648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */,
 				64EFBE3A1BDA7AE400408A50 /* Assets.xcassets in Resources */,
 				64EFBE381BDA7AE400408A50 /* Main.storyboard in Resources */,

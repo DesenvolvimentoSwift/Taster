@@ -10,37 +10,40 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Inicialização antes de exibir a aplicação ao utilizador.
         return true
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        // Invocado quando a aplicação transita para o estado inativo,
+        // a caminho do estado em background.
+        // Pode ser causado por interrupções temporárias como receber chamada.
     }
-
+    
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // App deve libertar os recursos e guardar os dados de forma a
+        // poder reiniciar a aplicação caso esta seja terminada.
+        // Apps que suportem execução em background execution, executam este
+        // método em vez do applicationWillTerminate: quando o utilizador sai.
     }
-
+    
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        // Invocado quando app está no estado inativo,
+        // em transição de background para ativo.
     }
-
+    
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // (Re)iniciar tarefas que ainda não foram iniciadas ou suspensas
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // A app irá terminar e dados devem ser guardados.
+        // Este método não é invocado se a app estiver suspensa.
     }
-
-
+    
 }
 
