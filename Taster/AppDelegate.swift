@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  Taster
 //
-//  Created by Luis Marcelino on 23/10/15.
 //  Copyright © 2015 Empresa Imaginada. All rights reserved.
 //
 

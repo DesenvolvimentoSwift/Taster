@@ -15,9 +15,12 @@
 		64330A5F1BEE62A4003F3D08 /* star_yellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */; };
 		648F35DF1BE120560028D6C5 /* heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35DE1BE120560028D6C5 /* heart.pdf */; };
 		648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35E91BE12B930028D6C5 /* heart_filled.pdf */; };
+		64D182111C734AF30052D6EE /* FoodCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */; };
+		64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182121C734B4D0052D6EE /* FoodRepository.swift */; };
+		64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */; };
+		64E737681C738C7200E4D492 /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E737661C738C7200E4D492 /* FoodTableViewCell.xib */; };
+		64E7376A1C738D1900E4D492 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E737691C738D1900E4D492 /* FoodTableViewCell.swift */; };
 		64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE301BDA7AE400408A50 /* AppDelegate.swift */; };
-		64EFBE331BDA7AE400408A50 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE321BDA7AE400408A50 /* FirstViewController.swift */; };
-		64EFBE351BDA7AE400408A50 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EFBE341BDA7AE400408A50 /* SecondViewController.swift */; };
 		64EFBE381BDA7AE400408A50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFBE361BDA7AE400408A50 /* Main.storyboard */; };
 		64EFBE3A1BDA7AE400408A50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64EFBE391BDA7AE400408A50 /* Assets.xcassets */; };
 		64EFBE3D1BDA7AE400408A50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFBE3B1BDA7AE400408A50 /* LaunchScreen.storyboard */; };
@@ -51,10 +54,13 @@
 		64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = star_yellow.pdf; sourceTree = "<group>"; };
 		648F35DE1BE120560028D6C5 /* heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart.pdf; sourceTree = "<group>"; };
 		648F35E91BE12B930028D6C5 /* heart_filled.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart_filled.pdf; sourceTree = "<group>"; };
+		64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewController.swift; sourceTree = "<group>"; };
+		64D182121C734B4D0052D6EE /* FoodRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
+		64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		64E737661C738C7200E4D492 /* FoodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
+		64E737691C738D1900E4D492 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		64EFBE2D1BDA7AE400408A50 /* Taster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EFBE301BDA7AE400408A50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		64EFBE321BDA7AE400408A50 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		64EFBE341BDA7AE400408A50 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		64EFBE371BDA7AE400408A50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64EFBE391BDA7AE400408A50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64EFBE3C1BDA7AE400408A50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,6 +109,26 @@
 			name = imgs;
 			sourceTree = "<group>";
 		};
+		64E737611C7381A700E4D492 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				640DD2101BDAB6890053E2BE /* Food.swift */,
+				64D182121C734B4D0052D6EE /* FoodRepository.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		64E737621C7381B700E4D492 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */,
+				640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */,
+				640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */,
+				64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		64EFBE241BDA7AE400408A50 = {
 			isa = PBXGroup;
 			children = (
@@ -129,16 +155,15 @@
 			children = (
 				648F35E01BE120680028D6C5 /* imgs */,
 				64EFBE301BDA7AE400408A50 /* AppDelegate.swift */,
-				64EFBE321BDA7AE400408A50 /* FirstViewController.swift */,
-				64EFBE341BDA7AE400408A50 /* SecondViewController.swift */,
 				64EFBE361BDA7AE400408A50 /* Main.storyboard */,
 				64EFBE391BDA7AE400408A50 /* Assets.xcassets */,
 				64EFBE3B1BDA7AE400408A50 /* LaunchScreen.storyboard */,
 				64EFBE3E1BDA7AE400408A50 /* Info.plist */,
-				640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */,
-				640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */,
-				640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */,
-				640DD2101BDAB6890053E2BE /* Food.swift */,
+				64E737621C7381B700E4D492 /* Controller */,
+				64E737611C7381A700E4D492 /* Model */,
+				64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */,
+				64E737661C738C7200E4D492 /* FoodTableViewCell.xib */,
+				64E737691C738D1900E4D492 /* FoodTableViewCell.swift */,
 			);
 			path = Taster;
 			sourceTree = "<group>";
@@ -268,6 +293,7 @@
 				648F35DF1BE120560028D6C5 /* heart.pdf in Resources */,
 				64330A5F1BEE62A4003F3D08 /* star_yellow.pdf in Resources */,
 				648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */,
+				64E737681C738C7200E4D492 /* FoodTableViewCell.xib in Resources */,
 				64EFBE3A1BDA7AE400408A50 /* Assets.xcassets in Resources */,
 				64EFBE381BDA7AE400408A50 /* Main.storyboard in Resources */,
 			);
@@ -294,13 +320,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */,
+				64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */,
+				64D182111C734AF30052D6EE /* FoodCollectionViewController.swift in Sources */,
 				640DD2111BDAB6890053E2BE /* Food.swift in Sources */,
 				640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */,
 				640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */,
-				64EFBE351BDA7AE400408A50 /* SecondViewController.swift in Sources */,
 				64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */,
-				64EFBE331BDA7AE400408A50 /* FirstViewController.swift in Sources */,
 				640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */,
+				64E7376A1C738D1900E4D492 /* FoodTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
