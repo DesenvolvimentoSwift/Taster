@@ -47,7 +47,11 @@ class FoodListTableViewController: UITableViewController {
 
         return cell
     }
-    
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let food = FoodRepository.foods[indexPath.row]
+        self.performSegueWithIdentifier("foodDetailSegue", sender: food)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -84,14 +88,15 @@ class FoodListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let controller = segue.destinationViewController as? FoodDetailViewController {
+            if let food = sender as? Food {
+                controller.food = food
+            }
+        }
     }
-    */
 
 }

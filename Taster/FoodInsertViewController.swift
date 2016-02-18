@@ -2,13 +2,12 @@
 //  FoodInsertViewController.swift
 //  Taster
 //
-//  Created by Luis Marcelino on 23/10/15.
 //  Copyright © 2015 Empresa Imaginada. All rights reserved.
 //
 
 import UIKit
 
-class FoodInsertViewController: UIViewController, UITextFieldDelegate {
+class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var food:Food?
 
@@ -54,6 +53,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ingredientsLabel: UILabel!
     
     var activeField:UITextField?
+    var newImage:UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +105,18 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate {
             self.food = FoodRepository.createFoodWithName(self.nameTextField.text! , local: self.localTextField.text!)
         }
         self.food?.favourite = self.favouriteButton.selected
+        self.food?.rating = self.rate
+        self.food?.description = self.descriptionTextView.text
+        
+        // Save image to path
+        if let image = self.newImage {
+            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let timestamp = Int(NSDate().timeIntervalSinceReferenceDate)
+            let filePath = "\(paths[0])/image-\(timestamp).png"
+            UIImagePNGRepresentation(image)?.writeToFile(filePath, atomically: true)
+            self.food?.mediaFiles = [filePath]
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -113,7 +125,26 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func pictureAction(sender: AnyObject) {
+        let alert = UIAlertController(title: "Origem da Imagem", message: nil, preferredStyle: .ActionSheet)
         
+        if UIImagePickerController.isCameraDeviceAvailable(.Front) {
+            alert.addAction(UIAlertAction(title: "Câmara", style: .Default, handler: { (action) -> Void in
+                let cameraUI = UIImagePickerController()
+                cameraUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera)!
+                cameraUI.delegate = self
+                self.presentViewController(cameraUI, animated: true, completion: nil)
+            }))
+        }
+        alert.addAction(UIAlertAction(title: "Galeria", style: .Default, handler: { (action) -> Void in
+            let galleryUI = UIImagePickerController()
+            galleryUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary)!
+            galleryUI.delegate = self
+            self.presentViewController(galleryUI, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel, handler: nil))
+
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     // From Apple Documentation
@@ -144,8 +175,6 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate {
         self.scrollView.contentInset = UIEdgeInsetsZero
         self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
         
-        
-        
     }
     
     func textFieldDidBeginEditing(textField: UITextField)
@@ -166,6 +195,14 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
         }
         return true
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.imageView.image = image
+        self.newImage = image
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

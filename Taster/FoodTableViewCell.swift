@@ -15,6 +15,7 @@ class FoodTableViewCell: UITableViewCell {
     @IBOutlet weak var foodNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var favouriteImageView: UIImageView!
     
     var food:Food? {
         didSet {
@@ -29,8 +30,13 @@ class FoodTableViewCell: UITableViewCell {
                 }
             }
             else {
-                //                self.imageView.image = UIImage(named: "")
                 self.backgroundImageView.image = nil
+            }
+            if self.food?.favourite == true {
+                self.favouriteImageView.image = UIImage(named: "heart_filled")
+            }
+            else {
+                self.favouriteImageView.image = UIImage(named: "heart")
             }
         }
     }

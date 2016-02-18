@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1897" y="-337"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Receitas Recentes-->
         <scene sceneID="88q-pa-81J">
             <objects>
                 <tableViewController id="FBM-OC-9m4" customClass="FoodListTableViewController" customModule="Taster" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                             <outlet property="delegate" destination="FBM-OC-9m4" id="R4P-dA-y5m"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="LmG-tc-a28">
+                    <navigationItem key="navigationItem" title="Receitas Recentes" id="LmG-tc-a28">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CyB-En-Qk4">
                             <connections>
                                 <segue destination="lY3-TJ-ca6" kind="presentation" id="eCZ-jT-ZRV"/>
@@ -85,14 +85,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="c3n-f8-d85" kind="show" identifier="recentFoodDetail" id="Ybu-3D-vhw"/>
+                        <segue destination="c3n-f8-d85" kind="show" identifier="foodDetailSegue" id="WLd-eO-cJ8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaV-EP-rJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1501" y="285"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Receitas-->
         <scene sceneID="Qi4-sG-nSo">
             <objects>
                 <tableViewController id="h6O-tW-iaW" sceneMemberID="viewController">
@@ -146,6 +146,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="c3n-f8-d85" kind="show" id="fdo-7P-mvf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -153,7 +156,7 @@
                             <outlet property="delegate" destination="h6O-tW-iaW" id="6IB-xn-nah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="YkW-bN-6jK">
+                    <navigationItem key="navigationItem" title="Receitas" id="YkW-bN-6jK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BnX-aa-n6y">
                             <connections>
                                 <segue destination="lY3-TJ-ca6" kind="presentation" id="qHy-QS-s2P"/>
@@ -162,7 +165,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="Pcd-fP-MTl" id="UeV-zP-kav"/>
-                        <segue destination="c3n-f8-d85" kind="show" identifier="searchFoodDetail" id="uMd-El-ULs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28N-xF-za9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,7 +264,7 @@
             </objects>
             <point key="canvasLocation" x="-1501" y="1521"/>
         </scene>
-        <!--Food Collection View Controller-->
+        <!--Receitas Favoritas-->
         <scene sceneID="6SE-AV-Ppl">
             <objects>
                 <collectionViewController id="6oa-07-Ruy" customClass="FoodCollectionViewController" customModule="Taster" customModuleProvider="target" sceneMemberID="viewController">
@@ -320,7 +322,7 @@
                             <outlet property="delegate" destination="6oa-07-Ruy" id="LXT-yo-iRR"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="WZ6-nt-hdZ"/>
+                    <navigationItem key="navigationItem" title="Receitas Favoritas" id="WZ6-nt-hdZ"/>
                     <connections>
                         <segue destination="c3n-f8-d85" kind="show" identifier="favouriteFoodDetail" id="Box-Hp-FW6"/>
                     </connections>
@@ -379,7 +381,7 @@
                                                     <action selector="saveAction:" destination="lY3-TJ-ca6" id="tan-kv-FCb"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="camera" id="6Pm-95-PBK">
+                                            <barButtonItem style="done" systemItem="camera" id="6Pm-95-PBK">
                                                 <connections>
                                                     <action selector="pictureAction:" destination="lY3-TJ-ca6" id="xwn-k2-ZIe"/>
                                                 </connections>
@@ -391,7 +393,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPw-gy-Ucn">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hey-PR-b4j">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dish_light" translatesAutoresizingMaskIntoConstraints="NO" id="hey-PR-b4j">
                                         <rect key="frame" x="0.0" y="10" width="320" height="196"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="a2K-Ob-EV0"/>
@@ -486,9 +488,9 @@
                                         <state key="normal" title="Ingredientes"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrediente a, ingrediente b, ingrediente c" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyo-w5-gmX">
-                                        <rect key="frame" x="20" y="484" width="280" height="42"/>
+                                        <rect key="frame" x="20" y="478" width="280" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="7gU-TQ-enz"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="7gU-TQ-enz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -511,7 +513,7 @@
                                     <constraint firstItem="n2Q-cl-9WZ" firstAttribute="top" secondItem="nBx-EZ-cpH" secondAttribute="bottom" constant="8" id="Naf-ks-7ny"/>
                                     <constraint firstItem="nBx-EZ-cpH" firstAttribute="leading" secondItem="KPw-gy-Ucn" secondAttribute="leading" constant="20" id="OUX-VS-ffH"/>
                                     <constraint firstItem="5s6-G7-dtK" firstAttribute="trailing" secondItem="Vif-N0-gmo" secondAttribute="trailing" id="PH8-yb-EUG"/>
-                                    <constraint firstItem="lyo-w5-gmX" firstAttribute="top" secondItem="XQW-lb-PFS" secondAttribute="bottom" constant="8" id="SAV-gD-fQr"/>
+                                    <constraint firstItem="lyo-w5-gmX" firstAttribute="top" secondItem="XQW-lb-PFS" secondAttribute="bottom" constant="2" id="SAV-gD-fQr"/>
                                     <constraint firstItem="6iC-gh-14C" firstAttribute="width" secondItem="4EM-af-504" secondAttribute="width" id="SkH-ak-2St"/>
                                     <constraint firstItem="n2Q-cl-9WZ" firstAttribute="leading" secondItem="nBx-EZ-cpH" secondAttribute="leading" id="Tw7-2U-xWY"/>
                                     <constraint firstItem="6z5-1A-0Iw" firstAttribute="leading" secondItem="lyo-w5-gmX" secondAttribute="leading" id="Ty6-1Q-sfx"/>
@@ -644,9 +646,25 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Food Name" id="i3X-Hc-F9O">
-                        <barButtonItem key="rightBarButtonItem" image="heart" id="705-8D-UyS"/>
+                        <barButtonItem key="rightBarButtonItem" image="heart" id="705-8D-UyS">
+                            <connections>
+                                <action selector="favouriteAction:" destination="c3n-f8-d85" id="gBX-4o-8q5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="descriptionLable" destination="dxq-t4-er7" id="IjK-Yx-uUU"/>
+                        <outlet property="favouriteButton" destination="705-8D-UyS" id="q8y-Eo-mi7"/>
+                        <outlet property="imageView" destination="Asy-DJ-3Jf" id="kwR-DK-lLy"/>
+                        <outlet property="localLabel" destination="Gwc-NC-Bc4" id="ump-S2-kCn"/>
+                        <outlet property="nameLabel" destination="kUv-rx-LGG" id="4hK-J1-n1u"/>
+                        <outlet property="star1Image" destination="GOo-e2-ZMm" id="dmU-vq-BBj"/>
+                        <outlet property="star2Image" destination="Z89-AS-gcE" id="MtA-RU-Sp1"/>
+                        <outlet property="star3Image" destination="At0-tw-FCR" id="Zdh-MF-FhN"/>
+                        <outlet property="star4Image" destination="xSI-T8-CXA" id="xbl-cj-CQj"/>
+                        <outlet property="star5Image" destination="CK1-6q-7U4" id="nef-Sg-EvB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fx0-00-tu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -654,6 +672,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dish_light" width="500" height="500"/>
         <image name="heart" width="30" height="30"/>
         <image name="heart_filled" width="30" height="30"/>
         <image name="star" width="30" height="30"/>
@@ -661,7 +680,7 @@
         <image name="world" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ybu-3D-vhw"/>
+        <segue reference="Box-Hp-FW6"/>
         <segue reference="eCZ-jT-ZRV"/>
     </inferredMetricsTieBreakers>
 </document>
