@@ -16,6 +16,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var localLabel: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var star1Image: UIImageView!
     @IBOutlet weak var star2Image: UIImageView!
@@ -48,8 +49,39 @@ class FoodDetailViewController: UIViewController {
         self.localLabel.text = self.food?.local
         self.descriptionLable.text = self.food?.description
         self.title = self.food?.name
+        
+        self.star1Image.image = UIImage(named: "star")
+        self.star2Image.image = UIImage(named: "star")
+        self.star3Image.image = UIImage(named: "star")
+        self.star4Image.image = UIImage(named: "star")
+        self.star5Image.image = UIImage(named: "star")
+        if let rating = self.food?.rating {
+            if rating > 0 {
+                self.star1Image.image = UIImage(named: "star_yellow")
+            }
+            if rating > 1 {
+                self.star2Image.image = UIImage(named: "star_yellow")
+            }
+            if rating > 2 {
+                self.star3Image.image = UIImage(named: "star_yellow")
+            }
+            if rating > 3 {
+                self.star4Image.image = UIImage(named: "star_yellow")
+            }
+            if rating > 4 {
+                self.star5Image.image = UIImage(named: "star_yellow")
+            }
+        }
+        let formater = NSDateFormatter()
+        formater.dateFormat = "yyyy-MM-dd"
+        if let date = self.food?.updated_at {
+            self.dateLabel.text = formater.stringFromDate(date)
+        }
 
-    }
+        if self.food != nil {
+            self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
+        }
+}
 
     /*
     // MARK: - Navigation
@@ -62,5 +94,9 @@ class FoodDetailViewController: UIViewController {
     */
 
     @IBAction func favouriteAction(sender: AnyObject) {
+        if self.food != nil {
+            self.food!.favourite = !self.food!.favourite
+            self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
+        }
     }
 }
