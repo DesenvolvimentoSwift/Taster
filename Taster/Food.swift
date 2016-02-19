@@ -17,7 +17,7 @@ class Food {
     var mediaFiles:[String]?;
     var rating:Int?;
     var favourite = false;
-    var last_updatevar = NSDate();
+    var updated_at = NSDate();
     
     init(id:Int, name:String, local:String) {
         self.id = id;

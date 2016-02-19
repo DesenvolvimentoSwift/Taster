@@ -1,33 +1,30 @@
 //
-//  FoodListTableViewController.swift
+//  RecentFoodTableViewController.swift
 //  Taster
 //
-//  Created by Luis Marcelino on 23/10/15.
-//  Copyright © 2015 Empresa Imaginada. All rights reserved.
+//  Created by Luis Marcelino on 19/02/16.
+//  Copyright © 2016 Empresa Imaginada. All rights reserved.
 //
 
 import UIKit
 
-class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
+class RecentFoodTableViewController: UITableViewController {
 
-    var resultFood = [Food]()
+    var recentFood = [Food]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.registerNib(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "foodTableCell")
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.resultFood = FoodRepository.foodSearch("")
-        self.tableView?.reloadData()
+        self.tableView.registerNib(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "foodTableCell")        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.recentFood = FoodRepository.foodByDate()
+        self.tableView.reloadData()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,27 +32,24 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resultFood.count
+        // #warning Incomplete implementation, return the number of rows
+        return recentFood.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("foodTableCell", forIndexPath: indexPath) as! FoodTableViewCell
-
-        cell.food = resultFood[indexPath.row]
-
+        
+        cell.food = recentFood[indexPath.row]
+        
         return cell
     }
-
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let food = resultFood[indexPath.row]
+        let food = recentFood[indexPath.row]
         self.performSegueWithIdentifier("foodDetailSegue", sender: food)
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -92,7 +86,7 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
     */
 
     // MARK: - Navigation
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let controller = segue.destinationViewController as? FoodDetailViewController {
             if let food = sender as? Food {
@@ -101,11 +95,5 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    // MARK: - UISearchBarDelegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.resultFood = FoodRepository.foodSearch(searchBar.text!)
-        self.tableView.reloadData()
-        searchBar.resignFirstResponder()
-    }
 
 }

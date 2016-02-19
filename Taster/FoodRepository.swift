@@ -36,4 +36,29 @@ class FoodRepository {
         }
         return fav
     }
+
+    static func foodByDate() -> [Food] {
+        var orderedFood = foods
+        orderedFood.sortInPlace { (food1, food2) -> Bool in
+            return food1.updated_at.compare(food2.updated_at) == .OrderedDescending
+        }
+        return orderedFood
+    }
+    
+    static func foodSearch(search:String) -> [Food] {
+        if search.characters.count == 0 {
+            return foods
+        }
+        var searchedFoods = [Food]()
+        for f in foods {
+            if f.name.containsString(search) ||
+                f.description?.containsString(search) == true ||
+                f.local.containsString(search)
+            {
+                searchedFoods.append(f)
+            }
+        }
+        return searchedFoods
+    }
+    
 }
