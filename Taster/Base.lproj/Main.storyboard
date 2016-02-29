@@ -22,9 +22,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5WW-L1-SPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1897" y="-337"/>
+            <point key="canvasLocation" x="-1897" y="259"/>
         </scene>
-        <!--Receitas Recentes-->
+        <!--Recent Food-->
         <scene sceneID="88q-pa-81J">
             <objects>
                 <tableViewController id="FBM-OC-9m4" customClass="RecentFoodTableViewController" customModule="Taster" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,10 +77,10 @@
                             <outlet property="delegate" destination="FBM-OC-9m4" id="R4P-dA-y5m"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Receitas Recentes" id="LmG-tc-a28">
+                    <navigationItem key="navigationItem" title="Recent Food" id="LmG-tc-a28">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CyB-En-Qk4">
                             <connections>
-                                <segue destination="lY3-TJ-ca6" kind="presentation" id="eCZ-jT-ZRV"/>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" identifier="foodDetailSegue" id="eCZ-jT-ZRV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -90,9 +90,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaV-EP-rJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1501" y="285"/>
+            <point key="canvasLocation" x="-1501" y="-385"/>
         </scene>
-        <!--Receitas-->
+        <!--Food-->
         <scene sceneID="Qi4-sG-nSo">
             <objects>
                 <tableViewController id="h6O-tW-iaW" customClass="FoodListTableViewController" customModule="Taster" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,10 +113,10 @@
                             <outlet property="delegate" destination="h6O-tW-iaW" id="6IB-xn-nah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Receitas" id="YkW-bN-6jK">
+                    <navigationItem key="navigationItem" title="Food" id="YkW-bN-6jK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BnX-aa-n6y">
                             <connections>
-                                <segue destination="lY3-TJ-ca6" kind="presentation" id="qHy-QS-s2P"/>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" identifier="foodDetailSegue" id="qHy-QS-s2P"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -157,7 +157,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHo-te-Bvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1897" y="285"/>
+            <point key="canvasLocation" x="-1897" y="-385"/>
         </scene>
         <!--Map-->
         <scene sceneID="MHs-dl-8c5">
@@ -209,7 +209,7 @@
             </objects>
             <point key="canvasLocation" x="-1501" y="1521"/>
         </scene>
-        <!--Receitas Favoritas-->
+        <!--Favourite Food-->
         <scene sceneID="6SE-AV-Ppl">
             <objects>
                 <collectionViewController id="6oa-07-Ruy" customClass="FoodCollectionViewController" customModule="Taster" customModuleProvider="target" sceneMemberID="viewController">
@@ -267,14 +267,14 @@
                             <outlet property="delegate" destination="6oa-07-Ruy" id="LXT-yo-iRR"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Receitas Favoritas" id="WZ6-nt-hdZ"/>
+                    <navigationItem key="navigationItem" title="Favourite Food" id="WZ6-nt-hdZ"/>
                     <connections>
                         <segue destination="c3n-f8-d85" kind="show" identifier="favouriteFoodDetail" id="Box-Hp-FW6"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XrD-AY-Q5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1501" y="-337"/>
+            <point key="canvasLocation" x="-1501" y="259"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -288,8 +288,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="zE4-Mp-ivb" kind="relationship" relationship="viewControllers" id="8KD-qs-aNf"/>
                         <segue destination="9Ql-dY-ahh" kind="relationship" relationship="viewControllers" id="odx-kq-SYq"/>
+                        <segue destination="zE4-Mp-ivb" kind="relationship" relationship="viewControllers" id="8KD-qs-aNf"/>
                         <segue destination="SXt-p1-MMK" kind="relationship" relationship="viewControllers" id="uvZ-kE-LyK"/>
                         <segue destination="LiM-pQ-yD3" kind="relationship" relationship="viewControllers" id="hSa-71-82k"/>
                     </connections>
@@ -338,12 +338,16 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPw-gy-Ucn">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dish_light" translatesAutoresizingMaskIntoConstraints="NO" id="hey-PR-b4j">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dish_light" translatesAutoresizingMaskIntoConstraints="NO" id="hey-PR-b4j">
                                         <rect key="frame" x="0.0" y="10" width="320" height="196"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="a2K-Ob-EV0"/>
                                             <constraint firstAttribute="height" constant="196" id="yah-cH-iHf"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="MkN-Tf-RcP" appends="YES" id="RkI-3B-dRf"/>
+                                        </connections>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nBx-EZ-cpH">
                                         <rect key="frame" x="20" y="214" width="280" height="30"/>
@@ -523,8 +527,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pii-WE-MDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MkN-Tf-RcP">
+                    <connections>
+                        <action selector="pictureAction:" destination="lY3-TJ-ca6" id="RaA-gS-qH5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-981" y="707"/>
+            <point key="canvasLocation" x="-1027" y="-9"/>
         </scene>
         <!--Food Name-->
         <scene sceneID="niU-BX-RNq">
@@ -671,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fx0-00-tu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-975" y="-231"/>
+            <point key="canvasLocation" x="-1027" y="1023"/>
         </scene>
     </scenes>
     <resources>
@@ -683,7 +692,7 @@
         <image name="world" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bXy-lQ-Fka"/>
         <segue reference="qHy-QS-s2P"/>
+        <segue reference="Box-Hp-FW6"/>
     </inferredMetricsTieBreakers>
 </document>

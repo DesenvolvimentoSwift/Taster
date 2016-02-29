@@ -9,6 +9,8 @@ import UIKit
 
 class FoodCollectionViewController: UICollectionViewController {
 
+    var foods = FoodRepository.favouriteFood()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,7 @@ class FoodCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        foods = FoodRepository.favouriteFood()
         self.collectionView?.reloadData()
     }
 
@@ -48,19 +51,22 @@ class FoodCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return FoodRepository.foods.count
+        return self.foods.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("foodCell", forIndexPath: indexPath) as! FoodCollectionViewCell
     
-        let food = FoodRepository.foods[indexPath.row]
+        let food = self.foods[indexPath.row]
         cell.food = food
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("favouriteFoodDetail", sender: self.foods[indexPath.row])
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -90,4 +96,9 @@ class FoodCollectionViewController: UICollectionViewController {
     }
     */
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let controller = segue.destinationViewController as? FoodDetailViewController {
+            controller.food = sender as? Food
+        }
+    }
 }

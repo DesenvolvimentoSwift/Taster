@@ -60,6 +60,8 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
 
         // Do any additional setup after loading the view.
         self.registerForKeyboardNotifications()
+        
+        self.descriptionTextView.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,10 +129,10 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBAction func pictureAction(sender: AnyObject) {
         let alert = UIAlertController(title: "Origem da Imagem", message: nil, preferredStyle: .ActionSheet)
         
-        if UIImagePickerController.isCameraDeviceAvailable(.Front) {
+        if UIImagePickerController.isCameraDeviceAvailable(.Rear) {
             alert.addAction(UIAlertAction(title: "Câmara", style: .Default, handler: { (action) -> Void in
                 let cameraUI = UIImagePickerController()
-                cameraUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera)!
+                cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
                 cameraUI.delegate = self
                 self.presentViewController(cameraUI, animated: true, completion: nil)
             }))
