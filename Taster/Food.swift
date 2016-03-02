@@ -12,8 +12,8 @@ class Food {
     var name:String;
     var local:String;
 
-    var description:String?;
-    var ingrediente:[String]?;
+    var foodDescription:String?;
+    var ingredientes:[String]?;
     var mediaFiles:[String]?;
     var rating:Int?;
     var favourite = false;
@@ -23,6 +23,13 @@ class Food {
         self.id = id;
         self.name = name;
         self.local = local;
+    }
+    
+    func ingredientesString() -> String {
+        if ingredientes == nil {
+            return "";
+        }
+        return ingredientes!.joinWithSeparator(", ")
     }
     
 }

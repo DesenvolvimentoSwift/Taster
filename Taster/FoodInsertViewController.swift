@@ -61,7 +61,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Do any additional setup after loading the view.
         self.registerForKeyboardNotifications()
         
-        self.descriptionTextView.text = ""
+        updateFoodView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +69,21 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Dispose of any resources that can be recreated.
     }
     
+    private func updateFoodView() {
+        self.nameTextField.text = food?.name
+        if let imageName = food?.mediaFiles?.first {
+            self.imageView?.image = UIImage(named: imageName)
+        }
+        else {
+            
+        }
+        self.descriptionTextView.text = food?.foodDescription
+        self.rate = food?.rating ?? 0
+        self.favouriteButton.selected = food?.favourite ?? false
+        self.localTextField.text = food?.local
+        self.ingredientsLabel.text = food?.ingredientesString()
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -108,7 +123,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         }
         self.food?.favourite = self.favouriteButton.selected
         self.food?.rating = self.rate
-        self.food?.description = self.descriptionTextView.text
+        self.food?.foodDescription = self.descriptionTextView.text
         
         // Save image to path
         if let image = self.newImage {

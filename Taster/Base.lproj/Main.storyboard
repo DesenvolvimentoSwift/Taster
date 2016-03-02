@@ -296,7 +296,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2351" y="959"/>
+            <point key="canvasLocation" x="-2451" y="959"/>
         </scene>
         <!--Food Insert View Controller-->
         <scene sceneID="jge-br-Oct">
@@ -516,6 +516,7 @@
                         <outlet property="descriptionTextView" destination="5s6-G7-dtK" id="Obo-uY-TCq"/>
                         <outlet property="favouriteButton" destination="Vif-N0-gmo" id="trx-2v-3gg"/>
                         <outlet property="imageView" destination="hey-PR-b4j" id="4Qd-vJ-YNi"/>
+                        <outlet property="ingredientsLabel" destination="lyo-w5-gmX" id="ccM-Tr-WBN"/>
                         <outlet property="localTextField" destination="6z5-1A-0Iw" id="42Y-An-d5a"/>
                         <outlet property="nameTextField" destination="nBx-EZ-cpH" id="SI4-CH-wRg"/>
                         <outlet property="scrollView" destination="KPw-gy-Ucn" id="qZ1-rY-R67"/>
@@ -533,7 +534,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1027" y="-9"/>
+            <point key="canvasLocation" x="-899" y="1055"/>
         </scene>
         <!--Food Name-->
         <scene sceneID="niU-BX-RNq">
@@ -657,11 +658,18 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Food Name" id="i3X-Hc-F9O">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="FM9-xV-enL"/>
-                        <barButtonItem key="rightBarButtonItem" image="heart" id="705-8D-UyS">
-                            <connections>
-                                <action selector="favouriteAction:" destination="c3n-f8-d85" id="gBX-4o-8q5"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="heart" id="705-8D-UyS">
+                                <connections>
+                                    <action selector="favouriteAction:" destination="c3n-f8-d85" id="gBX-4o-8q5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="edit" id="I81-Ty-3q2">
+                                <connections>
+                                    <segue destination="lY3-TJ-ca6" kind="presentation" id="EXh-Xv-05r"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -680,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fx0-00-tu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1027" y="1023"/>
+            <point key="canvasLocation" x="-899" y="-57"/>
         </scene>
     </scenes>
     <resources>
@@ -692,7 +700,7 @@
         <image name="world" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qHy-QS-s2P"/>
         <segue reference="Box-Hp-FW6"/>
+        <segue reference="EXh-Xv-05r"/>
     </inferredMetricsTieBreakers>
 </document>

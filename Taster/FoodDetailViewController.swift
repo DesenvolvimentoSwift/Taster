@@ -47,7 +47,7 @@ class FoodDetailViewController: UIViewController {
         }
         self.nameLabel.text = self.food?.name
         self.localLabel.text = self.food?.local
-        self.descriptionLable.text = self.food?.description
+        self.descriptionLable.text = self.food?.foodDescription
         self.title = self.food?.name
         
         self.star1Image.image = UIImage(named: "star")
@@ -83,20 +83,20 @@ class FoodDetailViewController: UIViewController {
         }
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     @IBAction func favouriteAction(sender: AnyObject) {
         if self.food != nil {
             self.food!.favourite = !self.food!.favourite
             self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
         }
     }
+
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let controller = segue.destinationViewController as? FoodInsertViewController {
+            controller.food = self.food
+        }
+    }
+    
 }

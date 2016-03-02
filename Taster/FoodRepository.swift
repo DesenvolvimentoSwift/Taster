@@ -52,7 +52,7 @@ class FoodRepository {
         var searchedFoods = [Food]()
         for f in foods {
             if f.name.containsString(search) ||
-                f.description?.containsString(search) == true ||
+                f.foodDescription?.containsString(search) == true ||
                 f.local.containsString(search)
             {
                 searchedFoods.append(f)
