@@ -97,6 +97,9 @@ class FoodDetailViewController: UIViewController {
         if let controller = segue.destinationViewController as? FoodInsertViewController {
             controller.food = self.food
         }
+        if let controller = segue.destinationViewController as? ShowLocationViewController {
+            controller.food = food
+        }
     }
     
 }

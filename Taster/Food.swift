@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class Food {
     let id:Int;
@@ -18,6 +19,8 @@ class Food {
     var rating:Int?;
     var favourite = false;
     var updated_at = NSDate();
+    
+    var location:CLLocationCoordinate2D?
     
     init(id:Int, name:String, local:String) {
         self.id = id;

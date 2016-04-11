@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import CoreLocation
 
-class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, writeValueBackDelegate {
 
     var food:Food?
+    var location:CLLocationCoordinate2D?
 
     var rate:Int = 0 {
         didSet {
@@ -124,6 +126,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         self.food?.favourite = self.favouriteButton.selected
         self.food?.rating = self.rate
         self.food?.foodDescription = self.descriptionTextView.text
+        self.food?.location = self.location
         
         // Save image to path
         if let image = self.newImage {
@@ -133,6 +136,16 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             UIImagePNGRepresentation(image)?.writeToFile(filePath, atomically: true)
             self.food?.mediaFiles = [filePath]
         }
+        // Save location
+        if let local = self.localTextField.text {
+            self.food?.local = local
+        }
+        
+//        if let loc = location {
+//            self.food?.location = loc
+//        }
+
+        self.food?.location = location
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -222,4 +235,14 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func writeValueBack(value: CLLocationCoordinate2D?) {
+        location = value
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let controller = segue.destinationViewController as? PickLocationViewController {
+            controller.location = self.location
+            print(self.location)
+            controller.delegate = self
+        }
+    }
 }

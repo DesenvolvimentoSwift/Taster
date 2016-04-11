@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C05D64F1CB6BD8B005DBFC0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C05D64E1CB6BD8B005DBFC0 /* CoreLocation.framework */; };
+		0C05D6511CB6CA35005DBFC0 /* PickLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C05D6501CB6CA35005DBFC0 /* PickLocationViewController.swift */; };
+		0C05D6531CB7A818005DBFC0 /* ShowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C05D6521CB7A818005DBFC0 /* ShowLocationViewController.swift */; };
+		0C05D6551CB7B6CE005DBFC0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C05D6541CB7B6CE005DBFC0 /* MapViewController.swift */; };
+		0C05D6571CB7B881005DBFC0 /* CustomPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C05D6561CB7B881005DBFC0 /* CustomPin.swift */; };
 		0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */; };
 		640759441C77994A00E8301C /* RecentFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640759431C77994A00E8301C /* RecentFoodTableViewController.swift */; };
 		640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */; };
@@ -48,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C05D64E1CB6BD8B005DBFC0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0C05D6501CB6CA35005DBFC0 /* PickLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickLocationViewController.swift; sourceTree = "<group>"; };
+		0C05D6521CB7A818005DBFC0 /* ShowLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLocationViewController.swift; sourceTree = "<group>"; };
+		0C05D6541CB7B6CE005DBFC0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0C05D6561CB7B881005DBFC0 /* CustomPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPin.swift; sourceTree = "<group>"; };
 		0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		640759431C77994A00E8301C /* RecentFoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentFoodTableViewController.swift; sourceTree = "<group>"; };
 		640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C05D64F1CB6BD8B005DBFC0 /* CoreLocation.framework in Frameworks */,
 				0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +138,7 @@
 		64E737611C7381A700E4D492 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C05D6561CB7B881005DBFC0 /* CustomPin.swift */,
 				640DD2101BDAB6890053E2BE /* Food.swift */,
 				64D182121C734B4D0052D6EE /* FoodRepository.swift */,
 			);
@@ -136,6 +148,9 @@
 		64E737621C7381B700E4D492 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C05D6541CB7B6CE005DBFC0 /* MapViewController.swift */,
+				0C05D6521CB7A818005DBFC0 /* ShowLocationViewController.swift */,
+				0C05D6501CB6CA35005DBFC0 /* PickLocationViewController.swift */,
 				640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */,
 				640DD20A1BDAB6030053E2BE /* FoodInsertViewController.swift */,
 				640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */,
@@ -148,6 +163,7 @@
 		64EFBE241BDA7AE400408A50 = {
 			isa = PBXGroup;
 			children = (
+				0C05D64E1CB6BD8B005DBFC0 /* CoreLocation.framework */,
 				0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */,
 				64EFBE2F1BDA7AE400408A50 /* Taster */,
 				64EFBE461BDA7AE400408A50 /* TasterTests */,
@@ -335,15 +351,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C05D6531CB7A818005DBFC0 /* ShowLocationViewController.swift in Sources */,
 				64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */,
 				64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */,
 				640759441C77994A00E8301C /* RecentFoodTableViewController.swift in Sources */,
 				64D182111C734AF30052D6EE /* FoodCollectionViewController.swift in Sources */,
 				640DD2111BDAB6890053E2BE /* Food.swift in Sources */,
+				0C05D6551CB7B6CE005DBFC0 /* MapViewController.swift in Sources */,
 				640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */,
+				0C05D6571CB7B881005DBFC0 /* CustomPin.swift in Sources */,
 				640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */,
 				64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */,
 				640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */,
+				0C05D6511CB6CA35005DBFC0 /* PickLocationViewController.swift in Sources */,
 				64E7376A1C738D1900E4D492 /* FoodTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
