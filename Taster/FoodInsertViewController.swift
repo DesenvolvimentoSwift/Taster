@@ -182,9 +182,9 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     // Call this method somewhere in your view controller setup code.
     func registerForKeyboardNotifications () {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FoodInsertViewController.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FoodInsertViewController.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWasShown (notification: NSNotification) {
@@ -228,13 +228,19 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.imageView.image = image
-        self.newImage = image
+    func imagePickerController(picker: UIImagePickerController,
+                                 didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.imageView.image = image
+            self.newImage = image
+        }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     func writeValueBack(value: CLLocationCoordinate2D?) {
         location = value
     }
