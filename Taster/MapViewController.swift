@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
-
+    
     @IBOutlet weak var map: MKMapView!
     
     var food:Food?
@@ -18,57 +18,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         map.delegate = self
         map.showsUserLocation = true
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        showFoodsOnMap(FoodRepository.foods)
+        showFoodsOnMap()
     }
     
-    func showFoodsOnMap (foodsToAdd:[Food]) {
+    func showFoodsOnMap () {
         var pin: CustomPin
-        //        map.removeAnnotations(self.map.annotations)
-        for f in FoodRepository.foods {
+        //map.removeAnnotations(self.map.annotations)
+        for f in FoodRepository.repository.foods {
             if let loc = f.location {
                 map.setRegion(MKCoordinateRegionMake(loc, MKCoordinateSpanMake(1, 1)), animated: true)
                 pin = CustomPin(coordinate: loc, food:f, title: f.name, subtitle: " ")
                 self.map.addAnnotation(pin)
             }
-            
         }
-        
     }
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        // 1
         let identifier = "identifier"
-        
-        // 2
         if annotation.isKindOfClass(CustomPin) {
-            // 3
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-            
             if annotationView == nil {
-                //4
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView!.canShowCallout = true
-                
-                // 5
                 let btn = UIButton(type: .DetailDisclosure)
                 annotationView!.rightCalloutAccessoryView = btn
             } else {
-                // 6
                 annotationView!.annotation = annotation
             }
-            
             return annotationView
         }
-        
-        // 7
         return nil
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
         let annotation = view.annotation as! CustomPin
         food = annotation.food
         self.performSegueWithIdentifier("mapFoodDetail", sender: annotation)
@@ -80,22 +65,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+

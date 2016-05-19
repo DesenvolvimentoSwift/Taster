@@ -9,7 +9,7 @@
 import UIKit
 
 class FoodDetailViewController: UIViewController {
-
+    
     var food:Food?
     
     @IBOutlet weak var imageView: UIImageView!
@@ -17,6 +17,8 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var localLabel: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var locationLabel: UILabel!
     
     @IBOutlet weak var star1Image: UIImageView!
     @IBOutlet weak var star2Image: UIImageView!
@@ -28,19 +30,26 @@ class FoodDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         refreshViews()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func refreshViews() {
-        if let imagePath = self.food?.mediaFiles?.last {
-            self.imageView.image = UIImage(named: imagePath)
+        //if let imagePath = self.food?.mediaFiles?.last {
+        if let imagePath = self.food?.mediaFile {
+            let documentsPath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
+            
+            let filePath = documentsPath.URLByAppendingPathComponent(imagePath, isDirectory: false)
+            let path = filePath.path!
+            print("FooddetailVC vai buscar a \(path)")
+            //self.imageView.image = UIImage(named: imagePath)
+            self.imageView.image = UIImage(named: path)
         }
         else {
             self.imageView.image = UIImage(named: "dish_light")
@@ -77,29 +86,36 @@ class FoodDetailViewController: UIViewController {
         if let date = self.food?.updated_at {
             self.dateLabel.text = formater.stringFromDate(date)
         }
-
+        
         if self.food != nil {
             self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
         }
-}
-
+    }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    
+    
     @IBAction func favouriteAction(sender: AnyObject) {
         if self.food != nil {
             self.food!.favourite = !self.food!.favourite
             self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
         }
     }
-
-    // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? FoodInsertViewController {
-            controller.food = self.food
-        }
         if let controller = segue.destinationViewController as? ShowLocationViewController {
+            //controller.location = self.food?.location
+            //controller.name = self.food?.name
             controller.food = food
         }
     }
-    
 }

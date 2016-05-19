@@ -9,7 +9,7 @@ import UIKit
 
 class FoodCollectionViewController: UICollectionViewController {
 
-    var foods = FoodRepository.favouriteFood()
+    var foods = FoodRepository.repository.favouriteFood()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class FoodCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        foods = FoodRepository.favouriteFood()
+        foods = FoodRepository.repository.favouriteFood()
         self.collectionView?.reloadData()
     }
 

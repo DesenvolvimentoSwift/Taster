@@ -8,8 +8,9 @@
 
 import UIKit
 
-class FoodTableViewCell: UITableViewCell {
 
+class FoodTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     @IBOutlet weak var foodNameLabel: UILabel!
@@ -21,8 +22,14 @@ class FoodTableViewCell: UITableViewCell {
         didSet {
             self.foodNameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
-            if let imageStr = self.food?.mediaFiles?.first {
-                if let image = UIImage(named: imageStr) {
+            //if let imageStr = self.food?.mediaFiles?.first {
+            if let imageStr = self.food?.mediaFile {
+                let documentsPath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
+                
+                let filePath = documentsPath.URLByAppendingPathComponent(imageStr, isDirectory: false)
+                let path = filePath.path!
+                
+                if let image = UIImage(named: path) {
                     self.backgroundImageView.image = image
                 }
                 else {
@@ -40,16 +47,16 @@ class FoodTableViewCell: UITableViewCell {
             }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

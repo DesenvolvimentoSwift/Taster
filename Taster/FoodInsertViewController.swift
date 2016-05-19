@@ -9,10 +9,11 @@ import UIKit
 import CoreLocation
 
 class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, writeValueBackDelegate {
-
+    
     var food:Food?
+    
     var location:CLLocationCoordinate2D?
-
+    
     var rate:Int = 0 {
         didSet {
             self.star1Button.selected = false
@@ -20,7 +21,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.star3Button.selected = false
             self.star4Button.selected = false
             self.star5Button.selected = false
-
+            
             if rate >= 1 {
                 self.star1Button.selected = true
             }
@@ -59,44 +60,29 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.registerForKeyboardNotifications()
         
-        updateFoodView()
+        self.descriptionTextView.text = ""
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    private func updateFoodView() {
-        self.nameTextField.text = food?.name
-        if let imageName = food?.mediaFiles?.first {
-            self.imageView?.image = UIImage(named: imageName)
-        }
-        else {
-            
-        }
-        self.descriptionTextView.text = food?.foodDescription
-        self.rate = food?.rating ?? 0
-        self.favouriteButton.selected = food?.favourite ?? false
-        self.localTextField.text = food?.local
-        self.ingredientsLabel.text = food?.ingredientesString()
-        
-    }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     @IBAction func starAction(sender: UIButton) {
         if sender == star1Button {
             self.rate = 1
@@ -121,41 +107,42 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     @IBAction func saveAction(sender: AnyObject) {
         if self.food == nil {
-            self.food = FoodRepository.createFoodWithName(self.nameTextField.text! , local: self.localTextField.text!)
+            self.food = FoodRepository.repository.createFoodWithName(self.nameTextField.text! , local: self.localTextField.text!)
         }
         self.food?.favourite = self.favouriteButton.selected
         self.food?.rating = self.rate
         self.food?.foodDescription = self.descriptionTextView.text
-        self.food?.location = self.location
         
         // Save image to path
         if let image = self.newImage {
             let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
             let timestamp = Int(NSDate().timeIntervalSinceReferenceDate)
+            let imagePath = "image-\(timestamp).png"
             let filePath = "\(paths[0])/image-\(timestamp).png"
+            
             UIImagePNGRepresentation(image)?.writeToFile(filePath, atomically: true)
-            self.food?.mediaFiles = [filePath]
+            //self.food?.mediaFiles = [filePath]
+            self.food?.mediaFile = imagePath
         }
+        
         // Save location
         if let local = self.localTextField.text {
             self.food?.local = local
         }
         
-//        if let loc = location {
-//            self.food?.location = loc
-//        }
-
-        self.food?.location = location
+        if let loc = location {
+            self.food?.location = loc
+        }
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     @IBAction func cancelAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     @IBAction func pictureAction(sender: AnyObject) {
-        let alert = UIAlertController(title: "Origem da Imagem", message: nil, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Image source", message: nil, preferredStyle: .ActionSheet)
         
         if UIImagePickerController.isCameraDeviceAvailable(.Rear) {
             alert.addAction(UIAlertAction(title: "Câmara", style: .Default, handler: { (action) -> Void in
@@ -165,15 +152,15 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 self.presentViewController(cameraUI, animated: true, completion: nil)
             }))
         }
-        alert.addAction(UIAlertAction(title: "Galeria", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Gallery", style: .Default, handler: { (action) -> Void in
             let galleryUI = UIImagePickerController()
             galleryUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary)!
             galleryUI.delegate = self
             self.presentViewController(galleryUI, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel, handler: nil))
-
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
