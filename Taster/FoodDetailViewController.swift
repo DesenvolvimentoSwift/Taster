@@ -41,15 +41,11 @@ class FoodDetailViewController: UIViewController {
     }
     
     func refreshViews() {
-        //if let imagePath = self.food?.mediaFiles?.last {
         if let imagePath = self.food?.mediaFile {
-            let documentsPath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
+            let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
             
             let filePath = documentsPath.URLByAppendingPathComponent(imagePath, isDirectory: false)
-            let path = filePath.path!
-            print("FooddetailVC vai buscar a \(path)")
-            //self.imageView.image = UIImage(named: imagePath)
-            self.imageView.image = UIImage(named: path)
+            self.imageView.image = UIImage(named: filePath.path!)
         }
         else {
             self.imageView.image = UIImage(named: "dish_light")

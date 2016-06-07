@@ -2,7 +2,6 @@
 //  RepositoryProtocol.swift
 //  Taster
 //
-//  Created by Catarina Silva on 19/05/16.
 //  Copyright © 2016 Empresa Imaginada. All rights reserved.
 //
 
@@ -13,4 +12,6 @@ protocol RepositoryProtocol {
     func favouriteFood() -> [Food]
     func foodByDate() -> [Food]
     func foodSearch(search:String) -> [Food]
+    
+    func mediaPath() -> String
 }

@@ -20,6 +20,7 @@
 		640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */; };
 		640DD2111BDAB6890053E2BE /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2101BDAB6890053E2BE /* Food.swift */; };
 		64330A5F1BEE62A4003F3D08 /* star_yellow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */; };
+		643642C01D077C59004230CE /* RepositoryProtocol+Populate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643642BF1D077C59004230CE /* RepositoryProtocol+Populate.swift */; };
 		64596A191C74EAB7002E511D /* dish_light.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 64596A181C74EAB7002E511D /* dish_light.pdf */; };
 		648F35DF1BE120560028D6C5 /* heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35DE1BE120560028D6C5 /* heart.pdf */; };
 		648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35E91BE12B930028D6C5 /* heart_filled.pdf */; };
@@ -67,6 +68,7 @@
 		640DD20C1BDAB6490053E2BE /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
 		640DD2101BDAB6890053E2BE /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		64330A5E1BEE62A4003F3D08 /* star_yellow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = star_yellow.pdf; sourceTree = "<group>"; };
+		643642BF1D077C59004230CE /* RepositoryProtocol+Populate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RepositoryProtocol+Populate.swift"; sourceTree = "<group>"; };
 		64596A181C74EAB7002E511D /* dish_light.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dish_light.pdf; sourceTree = "<group>"; };
 		648F35DE1BE120560028D6C5 /* heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart.pdf; sourceTree = "<group>"; };
 		648F35E91BE12B930028D6C5 /* heart_filled.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart_filled.pdf; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				640DD2101BDAB6890053E2BE /* Food.swift */,
 				64D182121C734B4D0052D6EE /* FoodRepository.swift */,
 				0C283A401CEDD5DC0080DA47 /* RepositoryProtocol.swift */,
+				643642BF1D077C59004230CE /* RepositoryProtocol+Populate.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C05D6531CB7A818005DBFC0 /* ShowLocationViewController.swift in Sources */,
+				643642C01D077C59004230CE /* RepositoryProtocol+Populate.swift in Sources */,
 				64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */,
 				64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */,
 				640759441C77994A00E8301C /* RecentFoodTableViewController.swift in Sources */,

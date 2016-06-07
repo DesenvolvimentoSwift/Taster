@@ -115,14 +115,12 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         // Save image to path
         if let image = self.newImage {
-            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
             let timestamp = Int(NSDate().timeIntervalSinceReferenceDate)
-            let imagePath = "image-\(timestamp).png"
-            let filePath = "\(paths[0])/image-\(timestamp).png"
+            let imageFileName = "image-\(timestamp).png"
+            let filePath = "\(FoodRepository.repository.mediaPath())/\(imageFileName)"
             
             UIImagePNGRepresentation(image)?.writeToFile(filePath, atomically: true)
-            //self.food?.mediaFiles = [filePath]
-            self.food?.mediaFile = imagePath
+            self.food?.mediaFile = imageFileName
         }
         
         // Save location

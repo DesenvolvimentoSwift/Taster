@@ -18,9 +18,8 @@ class FoodCollectionViewCell: UICollectionViewCell {
         didSet {
             self.nameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
-            //if let imageStr = self.food?.mediaFiles?.first {
             if let imageStr = self.food?.mediaFile {
-                let documentsPath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
+                let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
                 
                 let filePath = documentsPath.URLByAppendingPathComponent(imageStr, isDirectory: false)
                 let path = filePath.path!
@@ -33,7 +32,6 @@ class FoodCollectionViewCell: UICollectionViewCell {
                 }
             }
             else {
-                //                self.imageView.image = UIImage(named: "")
                 self.imageView.image = nil
             }
         }

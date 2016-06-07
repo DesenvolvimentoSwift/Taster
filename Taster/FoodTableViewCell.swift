@@ -22,11 +22,10 @@ class FoodTableViewCell: UITableViewCell {
         didSet {
             self.foodNameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
-            //if let imageStr = self.food?.mediaFiles?.first {
-            if let imageStr = self.food?.mediaFile {
-                let documentsPath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
+            if let imageFileName = self.food?.mediaFile {
+                let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
                 
-                let filePath = documentsPath.URLByAppendingPathComponent(imageStr, isDirectory: false)
+                let filePath = documentsPath.URLByAppendingPathComponent(imageFileName, isDirectory: false)
                 let path = filePath.path!
                 
                 if let image = UIImage(named: path) {
