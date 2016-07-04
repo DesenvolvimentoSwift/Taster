@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -80,7 +80,7 @@
                     <navigationItem key="navigationItem" title="Recent Food" id="LmG-tc-a28">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CyB-En-Qk4">
                             <connections>
-                                <segue destination="lY3-TJ-ca6" kind="presentation" identifier="foodDetailSegue" id="eCZ-jT-ZRV"/>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" identifier="foodDetailSegue" modalPresentationStyle="fullScreen" id="eCZ-jT-ZRV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -116,10 +116,13 @@
                     <navigationItem key="navigationItem" title="Food" id="YkW-bN-6jK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BnX-aa-n6y">
                             <connections>
-                                <segue destination="lY3-TJ-ca6" kind="presentation" identifier="foodDetailSegue" id="qHy-QS-s2P"/>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" identifier="" modalPresentationStyle="fullScreen" id="qHy-QS-s2P"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="c3n-f8-d85" kind="show" identifier="foodDetailSegue" id="bx2-2S-yZ0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28N-xF-za9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,7 +206,7 @@
                     <navigationItem key="navigationItem" id="b3y-Gi-KQr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="J6G-mZ-PdP">
                             <connections>
-                                <segue destination="lY3-TJ-ca6" kind="presentation" id="JXK-sw-dJp"/>
+                                <segue destination="lY3-TJ-ca6" kind="presentation" modalPresentationStyle="fullScreen" id="JXK-sw-dJp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -752,7 +755,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" systemItem="edit" id="I81-Ty-3q2">
                                 <connections>
-                                    <segue destination="lY3-TJ-ca6" kind="presentation" id="EXh-Xv-05r"/>
+                                    <segue destination="lY3-TJ-ca6" kind="presentation" modalPresentationStyle="fullScreen" id="EXh-Xv-05r"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -845,7 +848,7 @@
         <image name="world" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bXy-lQ-Fka"/>
-        <segue reference="JXK-sw-dJp"/>
+        <segue reference="bx2-2S-yZ0"/>
+        <segue reference="qHy-QS-s2P"/>
     </inferredMetricsTieBreakers>
 </document>
