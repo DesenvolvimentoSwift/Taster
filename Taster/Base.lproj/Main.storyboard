@@ -449,7 +449,7 @@
                                         <rect key="frame" x="214" y="446" width="86" height="30"/>
                                         <state key="normal" title="Ingredientes"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrediente a, ingrediente b, ingrediente c" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyo-w5-gmX">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrediente a, ingrediente b, ingrediente c" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyo-w5-gmX">
                                         <rect key="frame" x="20" y="478" width="280" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="7gU-TQ-enz"/>
@@ -543,7 +543,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pii-WE-MDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="MkN-Tf-RcP">
                     <connections>
-                        <action selector="pictureAction:" destination="lY3-TJ-ca6" id="RaA-gS-qH5"/>
+                        <action selector="pictureAction:" destination="lY3-TJ-ca6" id="SvP-hc-J1N"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

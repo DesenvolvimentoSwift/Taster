@@ -65,6 +65,18 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         self.registerForKeyboardNotifications()
         
         self.descriptionTextView.text = ""
+        
+        /////////////////////////////////
+        //
+        // Código para a secção 6.1.1.1
+
+        // Criar o objeto de reconhecimento de gesto
+        let tapRecog = UITapGestureRecognizer(target: self, action: #selector(tapIngredientsAction))
+        // Associar o objeto à vista
+        ingredientsLabel.addGestureRecognizer(tapRecog)
+        // Permitir a interação com a etiqueta
+        ingredientsLabel.userInteractionEnabled = true
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -235,5 +247,21 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             print(self.location)
             controller.delegate = self
         }
+    }
+    
+    func tapIngredientsAction(regognizer: UITapGestureRecognizer) {
+        // Controlador a mostrar com campo de texto
+        let alert = UIAlertController(title: "Ingredients", message: "Lista de ingredientes", preferredStyle: .Alert)
+        // Configurar o campo de texto
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = self.ingredientsLabel.text
+        })
+        // Ação quando o utilizador pressiona OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            self.ingredientsLabel.text = textField.text
+        }))
+        // Apresenta o controlador
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
