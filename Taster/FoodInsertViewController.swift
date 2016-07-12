@@ -76,7 +76,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         ingredientsLabel.addGestureRecognizer(tapRecog)
         // Permitir a interação com a etiqueta
         ingredientsLabel.userInteractionEnabled = true
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -152,6 +152,25 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     @IBAction func pictureAction(sender: AnyObject) {
+        self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+//        UIView.animateWithDuration(3.0) {
+        
+            // Secção 6.2.1 - Animaçõe de vista
+//            self.imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+            
+            // Secção 6.2.2 - Animação de camada
+//            self.imageView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2.0), 1, 0, 0)
+        
+//        }
+
+        // Secção 6.2.2 - Animação explícita
+        let anim = CABasicAnimation(keyPath: "borderWidth")
+        anim.fromValue = 0.0
+        anim.toValue = 10.0
+        anim.duration = 5.0
+        self.imageView.layer.addAnimation(anim, forKey: "Anima")
+        self.imageView.layer.borderWidth = 10.0
+
         let alert = UIAlertController(title: "Image source", message: nil, preferredStyle: .ActionSheet)
         
         if UIImagePickerController.isCameraDeviceAvailable(.Rear) {
@@ -169,7 +188,13 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.presentViewController(galleryUI, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+            UIView.animateWithDuration(3.0) {
+                self.imageView.layer.transform = CATransform3DIdentity
+
+                self.imageView.layer.borderWidth = 0.0
+            }
+            }))
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
