@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class FoodDetailViewController: UIViewController {
+class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     var food:Food?
     
@@ -28,11 +29,18 @@ class FoodDetailViewController: UIViewController {
     
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
+    var myPlayer: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         refreshViews()
+        
+        if let filePath = NSBundle.mainBundle().pathForResource("cup", ofType: "mp3") {
+            myPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: filePath))
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,6 +112,9 @@ class FoodDetailViewController: UIViewController {
         if self.food != nil {
             self.food!.favourite = !self.food!.favourite
             self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
+            
+            // Secção 6.3.1 Audio
+            myPlayer?.play()
         }
     }
     
