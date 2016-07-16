@@ -307,6 +307,7 @@
 				TargetAttributes = {
 					64EFBE2C1BDA7AE400408A50 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = E9QU59JGLF;
 					};
 					64EFBE421BDA7AE400408A50 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -532,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Taster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginada.Taster;
@@ -543,6 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Taster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imaginada.Taster;

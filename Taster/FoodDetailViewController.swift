@@ -29,7 +29,8 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
-    var myPlayer: AVAudioPlayer?
+    var myPlayer: AVPlayer?
+    var playerItem: AVPlayerItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +38,30 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
         // Do any additional setup after loading the view.
         refreshViews()
         
-        if let filePath = NSBundle.mainBundle().pathForResource("cup", ofType: "mp3") {
-            myPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: filePath))
-        }
+//        if let filePath = NSBundle.mainBundle().pathForResource("cup", ofType: "mp3") {
+//            myPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: filePath))
+//        }
 
+        if let url = NSURL(string: "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8") {
+            // You may find a test stream at <http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8>.
+            self.playerItem = AVPlayerItem(URL: url)
+            playerItem?.addObserver(self, forKeyPath: "status", options: .New, context: nil)
+            self.myPlayer = AVPlayer(playerItem: self.playerItem)
+            
+            let videoLayer = AVPlayerLayer(player: self.myPlayer)
+            videoLayer.anchorPoint = CGPoint.zero
+            videoLayer.bounds = self.imageView.layer.bounds
+            videoLayer.position = CGPoint(x: CGRectGetWidth(videoLayer.bounds) / CGFloat(-4.0), y: CGFloat(0))
+            self.imageView.layer.addSublayer(videoLayer)
+        }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        playerItem?.removeObserver(self, forKeyPath: "status")
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -124,5 +143,14 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
             //controller.name = self.food?.name
             controller.food = food
         }
+    }
+    
+    // NSKeyValueObserving
+    override func observeValueForKeyPath(keyPath: String?,
+                                 ofObject object: AnyObject?,
+                                          change: [String : AnyObject]?,
+                                         context: UnsafeMutablePointer<Void>) {
+        
+        print(object)
     }
 }
