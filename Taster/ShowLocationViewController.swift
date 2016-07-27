@@ -55,13 +55,20 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func viewDidAppear(animated: Bool) {
         if let loc = food?.location {
-            map.setRegion(MKCoordinateRegionMake(loc, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
-            annotation.coordinate = loc
-            annotation.title = food!.name
-            annotation.subtitle = " "
-            map.addAnnotation(annotation)
+            showLocation(loc)
+        }
+        else if let local = food?.local {
+            
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(local, completionHandler: { (placemarks, error) in
+                self.food?.location = placemarks?.first?.location?.coordinate
+                if let loc = self.food?.location {
+                    self.showLocation(loc)
+                }
+            })
         }
         else {
             let alertController = UIAlertController(title: "Error locating food.", message:"No location defined." , preferredStyle: UIAlertControllerStyle.Alert)
@@ -73,6 +80,13 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func showLocation (loc:CLLocationCoordinate2D) {
+        map.setRegion(MKCoordinateRegionMake(loc, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
+        annotation.coordinate = loc
+        annotation.title = food!.name
+        annotation.subtitle = " "
+        map.addAnnotation(annotation)
+    }
 
     /*
     // MARK: - Navigation
