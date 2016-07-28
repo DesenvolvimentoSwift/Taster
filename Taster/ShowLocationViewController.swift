@@ -13,7 +13,6 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
     var food:Food?
     var annotation = MKPointAnnotation()
     let locationManager = CLLocationManager ()
-    
 
     @IBOutlet weak var map: MKMapView!
     
@@ -86,8 +85,26 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         annotation.title = food!.name
         annotation.subtitle = " "
         map.addAnnotation(annotation)
+        
+        GeonamesClient.findNearbyWikipedia(loc) { (geoWiki) in
+            if geoWiki != nil {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    self.showNearbyWikipedia(geoWiki!)
+                })
+            }
+        }
     }
 
+    func showNearbyWikipedia (wikiEntries : [GeonamesWikipedia]) {
+        for entry in wikiEntries {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = entry.coordinate
+            annotation.title = entry.title
+            annotation.subtitle = entry.summary
+            map.addAnnotation(annotation)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
