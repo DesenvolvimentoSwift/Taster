@@ -57,6 +57,30 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
     
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "identifier"
+        var annotationView:MKPinAnnotationView?
+        
+        if annotation.isKindOfClass(MKPointAnnotation) {
+            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                
+                annotationView!.canShowCallout = true
+                annotationView!.pinTintColor = UIColor.purpleColor()
+                
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            
+            
+            return annotationView
+        }
+        return nil
+    }
+    
     override func viewDidLoad() {
         
         locationManager.delegate = self

@@ -11,7 +11,7 @@ import MapKit
 
 class ShowLocationViewController: UIViewController, MKMapViewDelegate {
     var food:Food?
-    var annotation = MKPointAnnotation()
+   // var annotation = MKPointAnnotation()
     let locationManager = CLLocationManager ()
 
     @IBOutlet weak var map: MKMapView!
@@ -46,6 +46,8 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        map.delegate = self
+        map.showsUserLocation = true
 
         // Do any additional setup after loading the view.
     }
@@ -59,16 +61,17 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         if let loc = food?.location {
             showLocation(loc)
         }
-        else if let local = food?.local {
-            
-            let geocoder = CLGeocoder()
-            geocoder.geocodeAddressString(local, completionHandler: { (placemarks, error) in
-                self.food?.location = placemarks?.first?.location?.coordinate
-                if let loc = self.food?.location {
-                    self.showLocation(loc)
-                }
-            })
-        }
+//Esta parte deixou de ser precisa, pois é feita logo no insert
+//        else if let local = food?.local {
+//            
+//            let geocoder = CLGeocoder()
+//            geocoder.geocodeAddressString(local, completionHandler: { (placemarks, error) in
+//                self.food?.location = placemarks?.first?.location?.coordinate
+//                if let loc = self.food?.location {
+//                    self.showLocation(loc)
+//                }
+//            })
+//        }
         else {
             let alertController = UIAlertController(title: "Error locating food.", message:"No location defined." , preferredStyle: UIAlertControllerStyle.Alert)
             
@@ -80,11 +83,12 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     func showLocation (loc:CLLocationCoordinate2D) {
+        
+        var pin:CustomPin
+        
         map.setRegion(MKCoordinateRegionMake(loc, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
-        annotation.coordinate = loc
-        annotation.title = food!.name
-        annotation.subtitle = " "
-        map.addAnnotation(annotation)
+        pin = CustomPin(coordinate: loc, food:food!, title: food!.name, subtitle: " ")
+        map.addAnnotation(pin)
         
         GeonamesClient.findNearbyWikipedia(loc) { (geoWiki) in
             if geoWiki != nil {
@@ -95,6 +99,30 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         }
     }
 
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "identifier"
+        var annotationView:MKPinAnnotationView?
+        
+        if annotation.isKindOfClass(CustomPin) {
+            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                
+                annotationView!.canShowCallout = true
+                annotationView!.pinTintColor = UIColor.purpleColor()
+                
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            
+            
+            return annotationView
+        }
+        return nil
+    }
+    
     func showNearbyWikipedia (wikiEntries : [GeonamesWikipedia]) {
         for entry in wikiEntries {
             let annotation = MKPointAnnotation()

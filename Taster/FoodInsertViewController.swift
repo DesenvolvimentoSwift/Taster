@@ -142,6 +142,17 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         if let loc = location {
             self.food?.location = loc
+        } else {
+            if let local = food?.local {
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(local, completionHandler: { (placemarks, error) in
+                    if let coord = placemarks?.first?.location {
+                        self.food?.location = coord.coordinate
+                        
+                    }
+                })
+                
+            }
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -265,6 +276,12 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
 
     func writeValueBack(value: CLLocationCoordinate2D?) {
         location = value
+        let geocoder = CLGeocoder()
+        let loc = CLLocation(latitude: location!.latitude, longitude: location!.longitude)
+        
+        geocoder.reverseGeocodeLocation(loc) { (placemarks, error) in
+            self.localTextField.text = placemarks?.first?.locality
+        }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let controller = segue.destinationViewController as? PickLocationViewController {
