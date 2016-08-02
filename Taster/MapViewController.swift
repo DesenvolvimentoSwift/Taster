@@ -38,16 +38,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "identifier"
+        var annotationView:MKPinAnnotationView?
+        
         if annotation.isKindOfClass(CustomPin) {
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            
+            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                
                 annotationView!.canShowCallout = true
+                annotationView!.pinTintColor = UIColor.purpleColor()
+                
                 let btn = UIButton(type: .DetailDisclosure)
                 annotationView!.rightCalloutAccessoryView = btn
             } else {
                 annotationView!.annotation = annotation
             }
+            
+            
+            
             return annotationView
         }
         return nil

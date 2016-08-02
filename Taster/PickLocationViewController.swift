@@ -21,8 +21,6 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
     let locationManager = CLLocationManager()
     
     var location:CLLocationCoordinate2D?
-    var currentLocation = CLLocationCoordinate2D()
-    var locationSet = false
     var annotation = MKPointAnnotation()
     
     var delegate: writeValueBackDelegate?
@@ -57,6 +55,30 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
     
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "identifier"
+        var annotationView:MKPinAnnotationView?
+        
+        if annotation.isKindOfClass(MKPointAnnotation) {
+            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                
+                annotationView!.canShowCallout = true
+                annotationView!.pinTintColor = UIColor.purpleColor()
+                
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            
+            
+            return annotationView
+        }
+        return nil
+    }
+    
     override func viewDidLoad() {
         
         locationManager.delegate = self
@@ -81,11 +103,6 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
             
             map.addAnnotation(annotation)
         }
-        else {
-             map.setRegion(MKCoordinateRegionMake(currentLocation, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
-            
-        }
-        
         
     }
 
@@ -104,11 +121,7 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
         let locationObj = locations.last
         let coord = locationObj?.coordinate
         if let c = coord {
-            currentLocation = c
-            if !locationSet {
-                locationSet = true
-                map.setRegion(MKCoordinateRegionMake(currentLocation, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
-            }
+            map.setRegion(MKCoordinateRegionMake(c, MKCoordinateSpanMake(0.1, 0.1)), animated: true)
         }
     }
     /*
