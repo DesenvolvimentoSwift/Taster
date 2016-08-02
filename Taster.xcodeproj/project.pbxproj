@@ -43,6 +43,7 @@
 		64F190C01D4908DD003C3F16 /* GeonamesWikipedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190BF1D4908DD003C3F16 /* GeonamesWikipedia.swift */; };
 		64F190C21D4908EB003C3F16 /* GeonamesPOI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190C11D4908EB003C3F16 /* GeonamesPOI.swift */; };
 		64F190C41D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */; };
+		64F564AD1D50E45C00C31263 /* samplePOI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 64F564AC1D50E45C00C31263 /* samplePOI.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		64E737661C738C7200E4D492 /* FoodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
 		64E737691C738D1900E4D492 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
+		64E8D7941D4F9BA700F4E89C /* sampleWikipedia.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sampleWikipedia.json; sourceTree = "<group>"; };
 		64EFBE2D1BDA7AE400408A50 /* Taster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EFBE301BDA7AE400408A50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64EFBE371BDA7AE400408A50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		64F190BF1D4908DD003C3F16 /* GeonamesWikipedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesWikipedia.swift; sourceTree = "<group>"; };
 		64F190C11D4908EB003C3F16 /* GeonamesPOI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesPOI.swift; sourceTree = "<group>"; };
 		64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeonamesWikipedia+JSON.swift"; sourceTree = "<group>"; };
+		64F564AC1D50E45C00C31263 /* samplePOI.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = samplePOI.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,8 @@
 				64B184E81D4A00DC00579E10 /* GeonamesPOI+XML.swift */,
 				64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */,
 				64B184E61D49FBE700579E10 /* GeonamesClient.swift */,
+				64E8D7941D4F9BA700F4E89C /* sampleWikipedia.json */,
+				64F564AC1D50E45C00C31263 /* samplePOI.xml */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				64596A191C74EAB7002E511D /* dish_light.pdf in Resources */,
 				64EFBE3A1BDA7AE400408A50 /* Assets.xcassets in Resources */,
 				64EFBE381BDA7AE400408A50 /* Main.storyboard in Resources */,
+				64F564AD1D50E45C00C31263 /* samplePOI.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

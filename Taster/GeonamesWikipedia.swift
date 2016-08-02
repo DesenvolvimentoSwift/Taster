@@ -32,6 +32,8 @@ struct GeonamesWikipedia {
     let title:String
     let summary:String
     let feature:String
+
+    let url:NSURL?
     
     let coordinate: CLLocationCoordinate2D
 }

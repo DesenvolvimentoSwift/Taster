@@ -1,0 +1,22 @@
+{
+    "geonames": [
+        {
+            "summary": "O Arco da Rua Augusta é um (...)",
+            "elevation": 12,
+            "feature": "landmark",
+            "lng": -9.1368,
+            "distance": "0.0216",
+            "countryCode": "PT",
+            "rank": 84,
+            "lang": "pt",
+            "title": "Arco da Rua Augusta",
+            "lat": 38.7084,
+            "wikipediaUrl": "pt.wikipedia.org/wiki/Arco_da_Rua_Augusta"
+        },
+        {
+            "summary": "(...)",
+            "countryCode": "PT",
+            "title": "Praça dp Comércio",
+        }
+    ]
+}

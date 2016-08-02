@@ -27,6 +27,6 @@ import CoreLocation
 struct GeonamesPOI {
     let name:String
     let typeName:String
-
+    
     let coordinate: CLLocationCoordinate2D
 }

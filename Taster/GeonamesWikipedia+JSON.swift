@@ -17,8 +17,9 @@ extension GeonamesWikipedia {
                 if let feature = jsonObj["feature"] as? String {
                     if let lat = jsonObj["lat"] as? Double {
                         if let lng = jsonObj["lng"] as? Double {
+                            let url = NSURL(string:"http://" + (jsonObj["wikipediaUrl"]! as! String))
                             let loc = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                            return GeonamesWikipedia(title: title, summary: summary, feature: feature, coordinate: loc)
+                            return GeonamesWikipedia(title: title, summary: summary, feature: feature, url: url, coordinate: loc)
                         }
                     }
                 }
@@ -26,5 +27,4 @@ extension GeonamesWikipedia {
         }
         return nil
     }
-    
 }
