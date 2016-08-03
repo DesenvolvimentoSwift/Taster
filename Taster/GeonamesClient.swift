@@ -39,10 +39,21 @@ class GeonamesClient {
     static func findNearbyPOI (loc:CLLocationCoordinate2D, completionHandler:([GeonamesPOI]?) -> Void) {
         let urlString = "http://api.geonames.org/findNearbyPOIsOSM?lat=\(loc.latitude)&lng=\(loc.longitude)&lang=PT&username=desenvolvimentoswift"
         if let url = NSURL(string: urlString) {
-            let session = NSURLSession.sharedSession()
+            let sessionConfig = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+            let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
             let sessionTask = session.dataTaskWithURL(url, completionHandler: { (data, response, error) in
-                let dataString = String(data)
-                print(dataString);
+                // Extrair dados
+                if data != nil {
+                    let xmlParser = NSXMLParser(data: data!)
+                    let delegate = GeonamesPOIXMLParserDelegate()
+                    xmlParser.delegate = delegate
+                    xmlParser.parse()
+                    completionHandler (delegate.POIs)
+                }
+                else {
+                    completionHandler(nil)
+                }
+                session.invalidateAndCancel()
             })
             sessionTask.resume()
         }

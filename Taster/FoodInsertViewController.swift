@@ -66,6 +66,10 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         self.descriptionTextView.text = ""
         
+        if self.food != nil {
+            updateFoodView()
+        }
+        
         /////////////////////////////////
         //
         // Código para a secção 6.1.1.1
@@ -84,6 +88,28 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Dispose of any resources that can be recreated.
     }
     
+    func updateFoodView() {
+        self.title = self.food?.name
+        self.nameTextField.text = self.food?.name
+        self.descriptionTextView.text = self.food?.foodDescription
+        self.localTextField.text = self.food?.local
+        self.rate = self.food?.rating ?? 0
+        
+        if let imagePath = self.food?.mediaFile {
+            let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
+            
+            let filePath = documentsPath.URLByAppendingPathComponent(imagePath, isDirectory: false)
+            self.imageView.image = UIImage(named: filePath.path!)
+        }
+        else {
+            self.imageView.image = UIImage(named: "dish_light")
+        }
+        
+        if self.food != nil {
+            self.favouriteButton.selected = self.food!.favourite
+        }
+
+    }
     
     /*
      // MARK: - Navigation

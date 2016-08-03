@@ -62,16 +62,16 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
             showLocation(loc)
         }
 //Esta parte deixou de ser precisa, pois é feita logo no insert
-//        else if let local = food?.local {
-//            
-//            let geocoder = CLGeocoder()
-//            geocoder.geocodeAddressString(local, completionHandler: { (placemarks, error) in
-//                self.food?.location = placemarks?.first?.location?.coordinate
-//                if let loc = self.food?.location {
-//                    self.showLocation(loc)
-//                }
-//            })
-//        }
+        else if let local = food?.local {
+            
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(local, completionHandler: { (placemarks, error) in
+                self.food?.location = placemarks?.first?.location?.coordinate
+                if let loc = self.food?.location {
+                    self.showLocation(loc)
+                }
+            })
+        }
         else {
             let alertController = UIAlertController(title: "Error locating food.", message:"No location defined." , preferredStyle: UIAlertControllerStyle.Alert)
             
@@ -97,6 +97,13 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
                 })
             }
         }
+
+        GeonamesClient.findNearbyPOI(loc, completionHandler: { (POIs) in
+            if POIs != nil {
+                self.showNearbyPOI(POIs!)
+            }
+        })
+
     }
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -115,20 +122,46 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
             } else {
                 annotationView!.annotation = annotation
             }
+            return annotationView
+        }
+        else if annotation.isKindOfClass(WikipediaPin) {
+            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("wikiPin") as? MKPinAnnotationView
             
-            
-            
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "wikiPin")
+                
+                annotationView!.canShowCallout = true
+                annotationView!.pinTintColor = UIColor.greenColor()
+                
+            } else {
+                annotationView!.annotation = annotation
+            }
             return annotationView
         }
         return nil
     }
     
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        if let wikiPin = view.annotation as? WikipediaPin {
+            if let url = wikiPin.geoWiki.url {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+    }
+    
     func showNearbyWikipedia (wikiEntries : [GeonamesWikipedia]) {
         for entry in wikiEntries {
+            let wikiPin = WikipediaPin(geoWiki: entry)
+            map.addAnnotation(wikiPin)
+        }
+    }
+    
+    func showNearbyPOI (poiEntries : [GeonamesPOI]) {
+        for entry in poiEntries {
             let annotation = MKPointAnnotation()
             annotation.coordinate = entry.coordinate
-            annotation.title = entry.title
-            annotation.subtitle = entry.summary
+            annotation.title = entry.name
+            annotation.subtitle = entry.typeName
             map.addAnnotation(annotation)
         }
     }

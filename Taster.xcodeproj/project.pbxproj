@@ -28,7 +28,6 @@
 		648F35DF1BE120560028D6C5 /* heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35DE1BE120560028D6C5 /* heart.pdf */; };
 		648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35E91BE12B930028D6C5 /* heart_filled.pdf */; };
 		64B184E71D49FBE700579E10 /* GeonamesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B184E61D49FBE700579E10 /* GeonamesClient.swift */; };
-		64B184E91D4A00DC00579E10 /* GeonamesPOI+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B184E81D4A00DC00579E10 /* GeonamesPOI+XML.swift */; };
 		64D182111C734AF30052D6EE /* FoodCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */; };
 		64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182121C734B4D0052D6EE /* FoodRepository.swift */; };
 		64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */; };
@@ -44,6 +43,8 @@
 		64F190C21D4908EB003C3F16 /* GeonamesPOI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190C11D4908EB003C3F16 /* GeonamesPOI.swift */; };
 		64F190C41D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */; };
 		64F564AD1D50E45C00C31263 /* samplePOI.xml in Resources */ = {isa = PBXBuildFile; fileRef = 64F564AC1D50E45C00C31263 /* samplePOI.xml */; };
+		64F564AF1D51796E00C31263 /* GeonamesPOIXMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F564AE1D51796E00C31263 /* GeonamesPOIXMLParserDelegate.swift */; };
+		64F564B11D5222B400C31263 /* WikipediaPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F564B01D5222B400C31263 /* WikipediaPin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +86,6 @@
 		648F35DE1BE120560028D6C5 /* heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart.pdf; sourceTree = "<group>"; };
 		648F35E91BE12B930028D6C5 /* heart_filled.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart_filled.pdf; sourceTree = "<group>"; };
 		64B184E61D49FBE700579E10 /* GeonamesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesClient.swift; sourceTree = "<group>"; };
-		64B184E81D4A00DC00579E10 /* GeonamesPOI+XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeonamesPOI+XML.swift"; sourceTree = "<group>"; };
 		64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewController.swift; sourceTree = "<group>"; };
 		64D182121C734B4D0052D6EE /* FoodRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
 		64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -108,6 +108,8 @@
 		64F190C11D4908EB003C3F16 /* GeonamesPOI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesPOI.swift; sourceTree = "<group>"; };
 		64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeonamesWikipedia+JSON.swift"; sourceTree = "<group>"; };
 		64F564AC1D50E45C00C31263 /* samplePOI.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = samplePOI.xml; sourceTree = "<group>"; };
+		64F564AE1D51796E00C31263 /* GeonamesPOIXMLParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesPOIXMLParserDelegate.swift; sourceTree = "<group>"; };
+		64F564B01D5222B400C31263 /* WikipediaPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikipediaPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 		64E737611C7381A700E4D492 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				64F564AE1D51796E00C31263 /* GeonamesPOIXMLParserDelegate.swift */,
 				0C05D6561CB7B881005DBFC0 /* CustomPin.swift */,
 				640DD2101BDAB6890053E2BE /* Food.swift */,
 				64D182121C734B4D0052D6EE /* FoodRepository.swift */,
@@ -178,11 +181,11 @@
 				643642BF1D077C59004230CE /* RepositoryProtocol+Populate.swift */,
 				64F190BF1D4908DD003C3F16 /* GeonamesWikipedia.swift */,
 				64F190C11D4908EB003C3F16 /* GeonamesPOI.swift */,
-				64B184E81D4A00DC00579E10 /* GeonamesPOI+XML.swift */,
 				64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */,
 				64B184E61D49FBE700579E10 /* GeonamesClient.swift */,
 				64E8D7941D4F9BA700F4E89C /* sampleWikipedia.json */,
 				64F564AC1D50E45C00C31263 /* samplePOI.xml */,
+				64F564B01D5222B400C31263 /* WikipediaPin.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -402,9 +405,9 @@
 				0C05D6531CB7A818005DBFC0 /* ShowLocationViewController.swift in Sources */,
 				643642C01D077C59004230CE /* RepositoryProtocol+Populate.swift in Sources */,
 				64F190C01D4908DD003C3F16 /* GeonamesWikipedia.swift in Sources */,
+				64F564B11D5222B400C31263 /* WikipediaPin.swift in Sources */,
 				64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */,
 				64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */,
-				64B184E91D4A00DC00579E10 /* GeonamesPOI+XML.swift in Sources */,
 				64B184E71D49FBE700579E10 /* GeonamesClient.swift in Sources */,
 				640759441C77994A00E8301C /* RecentFoodTableViewController.swift in Sources */,
 				64D182111C734AF30052D6EE /* FoodCollectionViewController.swift in Sources */,
@@ -415,6 +418,7 @@
 				640DD20B1BDAB6030053E2BE /* FoodInsertViewController.swift in Sources */,
 				64F190C41D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift in Sources */,
 				0C05D6571CB7B881005DBFC0 /* CustomPin.swift in Sources */,
+				64F564AF1D51796E00C31263 /* GeonamesPOIXMLParserDelegate.swift in Sources */,
 				640DD20D1BDAB6490053E2BE /* FoodListTableViewController.swift in Sources */,
 				64EFBE311BDA7AE400408A50 /* AppDelegate.swift in Sources */,
 				640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */,

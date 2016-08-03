@@ -97,18 +97,6 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
-    
     @IBAction func favouriteAction(sender: AnyObject) {
         if self.food != nil {
             self.food!.favourite = !self.food!.favourite
@@ -116,12 +104,17 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
+    // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let controller = segue.destinationViewController as? ShowLocationViewController {
             //controller.location = self.food?.location
             //controller.name = self.food?.name
             controller.food = food
         }
+        else if let controller = segue.destinationViewController as? FoodInsertViewController {
+            controller.food = self.food
+        }
+
     }
     
 }

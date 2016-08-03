@@ -1,4 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <geonames>
+    <poi>
+        <name>Farmácia Privativa Ass. Soc. M. Empregados do Estado</name>
+        <typeClass>amenity</typeClass>
+        <typeName>pharmacy</typeName>
+        <lng>-9.1366224</lng>
+        <lat>38.7084654</lat>
+        <distance>0.03</distance>
+    </poi>
+    <poi>
+        <name>Ministerio da Justiça</name>
+        <typeClass>amenity</typeClass>
+        <typeName>public_building</typeName>
+        <lng>-9.1372238</lng>
+        <lat>38.7083559</lat>
+        <distance>0.04</distance>
+    </poi>
+    <poi>
+        <name>Supremo Tribunal de Justiça</name>
+        <typeClass>amenity</typeClass>
+        <typeName>courthouse</typeName>
+        <lng>-9.1364002</lng>
+        <lat>38.7085578</lat>
+        <distance>0.05</distance>
+    </poi>
     <poi>
         <name>Ginginha do Carmo</name>
         <typeClass>amenity</typeClass>
@@ -6,5 +31,53 @@
         <lng>-9.1358968</lng>
         <lat>38.7083873</lat>
         <distance>0.08</distance>
+    </poi>
+    <poi>
+        <name>Dom José I</name>
+        <typeClass>tourism</typeClass>
+        <typeName>artwork</typeName>
+        <lng>-9.1364597</lng>
+        <lat>38.7075426</lat>
+        <distance>0.08</distance>
+    </poi>
+    <poi>
+        <name>Martinho da Arcada</name>
+        <typeClass>amenity</typeClass>
+        <typeName>cafe</typeName>
+        <lng>-9.1358715</lng>
+        <lat>38.7086589</lat>
+        <distance>0.09</distance>
+    </poi>
+    <poi>
+        <name>Aura</name>
+        <typeClass>amenity</typeClass>
+        <typeName>restaurant</typeName>
+        <lng>-9.1377972</lng>
+        <lat>38.7079142</lat>
+        <distance>0.1</distance>
+    </poi>
+    <poi>
+        <name>ask me Lisboa</name>
+        <typeClass>tourism</typeClass>
+        <typeName>information</typeName>
+        <lng>-9.1377557</lng>
+        <lat>38.7077939</lat>
+        <distance>0.1</distance>
+    </poi>
+    <poi>
+        <name>paço d'água</name>
+        <typeClass>amenity</typeClass>
+        <typeName>restaurant</typeName>
+        <lng>-9.1377039</lng>
+        <lat>38.7076834</lat>
+        <distance>0.1</distance>
+    </poi>
+    <poi>
+        <name>Chefe Cordeiro</name>
+        <typeClass>amenity</typeClass>
+        <typeName>restaurant</typeName>
+        <lng>-9.137676</lng>
+        <lat>38.7075671</lat>
+        <distance>0.11</distance>
     </poi>
 </geonames>
