@@ -23,7 +23,7 @@ class GeonamesWikiTest: XCTestCase {
     }
     
     func testJsonParse() {
-        if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
+        if let data = self.jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
             if let jsonObj = (try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)) as? [String:AnyObject] {
                 let geoWiki = GeonamesWikipedia.parseJSON(jsonObj)
                 XCTAssertNotNil(geoWiki)
@@ -33,14 +33,13 @@ class GeonamesWikiTest: XCTestCase {
         else {
             XCTFail("Could not create data from input")
         }
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
             // Put the code you want to measure the time of here.
+            self.testJsonParse()
         }
     }
     
