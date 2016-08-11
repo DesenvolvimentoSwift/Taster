@@ -36,12 +36,9 @@ class GeonamesPOIXMLParserDelegate: NSObject, NSXMLParserDelegate {
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "poi" {
             if let name = values["name"] {
-                if let typeName = values["typeName"]?.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
-                    if let latStr = values["lat"]?.stringByTrimmingCharactersInSet(
-                        NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
-                        if let lngStr = values["lng"]?.stringByTrimmingCharactersInSet(
-                            NSCharacterSet.whitespaceAndNewlineCharacterSet()) {
+                if let typeName = values["typeName"] {
+                    if let latStr = values["lat"] {
+                        if let lngStr = values["lng"] {
                             let poi = GeonamesPOI(name: name, typeName: typeName, coordinate: CLLocationCoordinate2D(latitude: Double(latStr)!, longitude: Double(lngStr)!))
                             if POIs == nil {
                                 POIs = []
@@ -52,6 +49,9 @@ class GeonamesPOIXMLParserDelegate: NSObject, NSXMLParserDelegate {
                 }
             }
             values = [:]
+        }
+        else {
+            currentTag = nil
         }
     }
 }
