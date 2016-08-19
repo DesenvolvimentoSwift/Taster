@@ -1,9 +1,10 @@
 //
 //  GeonameWikipedia.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 27/07/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation
@@ -33,7 +34,7 @@ struct GeonamesWikipedia {
     let summary:String
     let feature:String
 
-    let url:NSURL?
+    let url:URL?
     
     let coordinate: CLLocationCoordinate2D
 }

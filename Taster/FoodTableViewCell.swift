@@ -1,9 +1,10 @@
 //
 //  FoodTableViewCell.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 16/02/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -23,10 +24,10 @@ class FoodTableViewCell: UITableViewCell {
             self.foodNameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
             if let imageFileName = self.food?.mediaFile {
-                let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
+                let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
                 
-                let filePath = documentsPath.URLByAppendingPathComponent(imageFileName, isDirectory: false)
-                let path = filePath.path!
+                let filePath = documentsPath.appendingPathComponent(imageFileName, isDirectory: false)
+                let path = filePath.path
                 
                 if let image = UIImage(named: path) {
                     self.backgroundImageView.image = image
@@ -52,7 +53,7 @@ class FoodTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state

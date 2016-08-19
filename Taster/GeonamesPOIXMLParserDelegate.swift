@@ -1,26 +1,27 @@
 //
 //  GeonamesPOI+XML.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 28/07/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation
 import CoreLocation
 
-class GeonamesPOIXMLParserDelegate: NSObject, NSXMLParserDelegate {
+class GeonamesPOIXMLParserDelegate: NSObject, XMLParserDelegate {
     
     var POIs:[GeonamesPOI]?
 
     var currentTag:String?
     var values = [String:String]()
 
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         currentTag = elementName
     }
 
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         guard let tag = currentTag else {
             return;
         }
@@ -33,7 +34,7 @@ class GeonamesPOIXMLParserDelegate: NSObject, NSXMLParserDelegate {
     }
     
 
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "poi" {
             if let name = values["name"] {
                 if let typeName = values["typeName"] {

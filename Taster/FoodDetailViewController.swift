@@ -1,9 +1,10 @@
 //
 //  FoodDetailViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 23/10/15.
-//  Copyright © 2015 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -40,7 +41,7 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
 //        }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
@@ -51,10 +52,10 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     func refreshViews() {
         if let imagePath = self.food?.mediaFile {
-            let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
+            let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
             
-            let filePath = documentsPath.URLByAppendingPathComponent(imagePath, isDirectory: false)
-            self.imageView.image = UIImage(named: filePath.path!)
+            let filePath = documentsPath.appendingPathComponent(imagePath, isDirectory: false)
+            self.imageView.image = UIImage(named: filePath.path)
         }
         else {
             self.imageView.image = UIImage(named: "dish_light")
@@ -86,10 +87,10 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
                 self.star5Image.image = UIImage(named: "star_yellow")
             }
         }
-        let formater = NSDateFormatter()
+        let formater = DateFormatter()
         formater.dateFormat = "yyyy-MM-dd"
         if let date = self.food?.updated_at {
-            self.dateLabel.text = formater.stringFromDate(date)
+            self.dateLabel.text = formater.string(from: date as Date)
         }
         
         if self.food != nil {
@@ -97,7 +98,7 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    @IBAction func favouriteAction(sender: AnyObject) {
+    @IBAction func favouriteAction(_ sender: AnyObject) {
         if self.food != nil {
             self.food!.favourite = !self.food!.favourite
             self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
@@ -105,13 +106,13 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? ShowLocationViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? ShowLocationViewController {
             //controller.location = self.food?.location
             //controller.name = self.food?.name
             controller.food = food
         }
-        else if let controller = segue.destinationViewController as? FoodInsertViewController {
+        else if let controller = segue.destination as? FoodInsertViewController {
             controller.food = self.food
         }
 

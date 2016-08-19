@@ -1,8 +1,10 @@
 //
 //  FoodCollectionViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -20,7 +22,7 @@ class FoodCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         foods = FoodRepository.repository.favouriteFood()
@@ -44,28 +46,28 @@ class FoodCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return self.foods.count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("foodCell", forIndexPath: indexPath) as! FoodCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCell", for: indexPath) as! FoodCollectionViewCell
     
-        let food = self.foods[indexPath.row]
+        let food = self.foods[(indexPath as NSIndexPath).row]
         cell.food = food
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("favouriteFoodDetail", sender: self.foods[indexPath.row])
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "favouriteFoodDetail", sender: self.foods[(indexPath as NSIndexPath).row])
     }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -96,8 +98,8 @@ class FoodCollectionViewController: UICollectionViewController {
     }
     */
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? FoodDetailViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? FoodDetailViewController {
             controller.food = sender as? Food
         }
     }

@@ -1,9 +1,10 @@
 //
 //  FoodCollectionViewCell.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 16/02/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -19,10 +20,10 @@ class FoodCollectionViewCell: UICollectionViewCell {
             self.nameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
             if let imageStr = self.food?.mediaFile {
-                let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
+                let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
                 
-                let filePath = documentsPath.URLByAppendingPathComponent(imageStr, isDirectory: false)
-                let path = filePath.path!
+                let filePath = documentsPath.appendingPathComponent(imageStr, isDirectory: false)
+                let path = filePath.path
                 
                 if let image = UIImage(named: path) {
                     self.imageView.image = image

@@ -1,9 +1,10 @@
 //
 //  CustomPin.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Catarina Silva on 08/04/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation

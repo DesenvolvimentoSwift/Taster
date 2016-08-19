@@ -1,9 +1,10 @@
 //
 //  RecentFoodTableViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 19/02/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -15,10 +16,10 @@ class RecentFoodTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerNib(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "foodTableCell")
+        self.tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "foodTableCell")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         self.recentFood = FoodRepository.repository.foodByDate()
@@ -32,22 +33,22 @@ class RecentFoodTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return recentFood.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("foodTableCell", forIndexPath: indexPath) as! FoodTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "foodTableCell", for: indexPath) as! FoodTableViewCell
         
-        cell.food = recentFood[indexPath.row]
+        cell.food = recentFood[(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let food = recentFood[indexPath.row]
-        self.performSegueWithIdentifier("foodDetailSegue", sender: food)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let food = recentFood[(indexPath as NSIndexPath).row]
+        self.performSegue(withIdentifier: "foodDetailSegue", sender: food)
     }
     
     /*
@@ -87,8 +88,8 @@ class RecentFoodTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? FoodDetailViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? FoodDetailViewController {
             if let food = sender as? Food {
                 controller.food = food
             }

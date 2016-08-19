@@ -1,9 +1,10 @@
 //
 //  ShowLocationViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Catarina Silva on 08/04/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -16,11 +17,11 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
     
-    @IBAction func cancelAction(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func navigateAction(sender: UIButton) {
+    @IBAction func navigateAction(_ sender: UIButton) {
         if let loc = food?.location  {
             locationManager.startUpdatingLocation()
             let latituteFood:CLLocationDegrees =  loc.latitude
@@ -36,11 +37,11 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
             mapItem.name = food!.name
             
             
-            let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeDriving, forKey: MKLaunchOptionsDirectionsModeKey)
+            let launchOptions:NSDictionary = NSDictionary(object: MKLaunchOptionsDirectionsModeDriving, forKey: MKLaunchOptionsDirectionsModeKey as NSCopying)
             
-            let currentLocationMapItem:MKMapItem = MKMapItem.mapItemForCurrentLocation()
+            let currentLocationMapItem:MKMapItem = MKMapItem.forCurrentLocation()
             
-            MKMapItem.openMapsWithItems([currentLocationMapItem, mapItem], launchOptions: launchOptions as? [String : AnyObject])
+            MKMapItem.openMaps(with: [currentLocationMapItem, mapItem], launchOptions: launchOptions as? [String : AnyObject])
         }
     }
     
@@ -57,7 +58,7 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if let loc = food?.location {
             showLocation(loc)
         }
@@ -73,16 +74,16 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
             })
         }
         else {
-            let alertController = UIAlertController(title: "Error locating food.", message:"No location defined." , preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title: "Error locating food.", message:"No location defined." , preferredStyle: UIAlertControllerStyle.alert)
             
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             
         }
     }
     
-    func showLocation (loc:CLLocationCoordinate2D) {
+    func showLocation (_ loc:CLLocationCoordinate2D) {
         
         var pin:CustomPin
         
@@ -92,7 +93,7 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         
         GeonamesClient.findNearbyWikipedia(loc) { (geoWiki) in
             if geoWiki != nil {
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                OperationQueue.main.addOperation({ 
                     self.showNearbyWikipedia(geoWiki!)
                 })
             }
@@ -106,32 +107,32 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
 
     }
 
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "identifier"
         var annotationView:MKPinAnnotationView?
         
-        if annotation.isKindOfClass(CustomPin) {
-            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+        if annotation.isKind(of: CustomPin.self) {
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
             
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 
                 annotationView!.canShowCallout = true
-                annotationView!.pinTintColor = UIColor.purpleColor()
+                annotationView!.pinTintColor = UIColor.purple
                 
             } else {
                 annotationView!.annotation = annotation
             }
             return annotationView
         }
-        else if annotation.isKindOfClass(WikipediaPin) {
-            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("wikiPin") as? MKPinAnnotationView
+        else if annotation.isKind(of: WikipediaPin.self) {
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "wikiPin") as? MKPinAnnotationView
             
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "wikiPin")
                 
                 annotationView!.canShowCallout = true
-                annotationView!.pinTintColor = UIColor.greenColor()
+                annotationView!.pinTintColor = UIColor.green
                 
             } else {
                 annotationView!.annotation = annotation
@@ -141,22 +142,22 @@ class ShowLocationViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let wikiPin = view.annotation as? WikipediaPin {
             if let url = wikiPin.geoWiki.url {
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared.openURL(url as URL)
             }
         }
     }
     
-    func showNearbyWikipedia (wikiEntries : [GeonamesWikipedia]) {
+    func showNearbyWikipedia (_ wikiEntries : [GeonamesWikipedia]) {
         for entry in wikiEntries {
             let wikiPin = WikipediaPin(geoWiki: entry)
             map.addAnnotation(wikiPin)
         }
     }
     
-    func showNearbyPOI (poiEntries : [GeonamesPOI]) {
+    func showNearbyPOI (_ poiEntries : [GeonamesPOI]) {
         for entry in poiEntries {
             let annotation = MKPointAnnotation()
             annotation.coordinate = entry.coordinate

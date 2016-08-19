@@ -1,8 +1,10 @@
 //
 //  FoodRepository.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation
@@ -10,11 +12,11 @@ import Foundation
 class FoodRepository:RepositoryProtocol {
     
     static let repository = FoodRepository() //shared instance
-    private init() {}
+    fileprivate init() {}
     
     var foods = [Food]()
     
-    private func getNextId() -> Int {
+    fileprivate func getNextId() -> Int {
         if let lastId = self.foods.last?.id {
             return lastId + 1
         }
@@ -23,7 +25,7 @@ class FoodRepository:RepositoryProtocol {
         }
     }
     
-    func createFoodWithName(name:String, local:String) -> Food {
+    func createFoodWithName(_ name:String, local:String) -> Food {
         let id = getNextId()
         let f = Food(id: id, name: name, local: local)
         self.foods.append(f)
@@ -42,21 +44,21 @@ class FoodRepository:RepositoryProtocol {
     }
     func foodByDate() -> [Food] {
         var orderedFood = foods
-        orderedFood.sortInPlace { (food1, food2) -> Bool in
-            return food1.updated_at.compare(food2.updated_at) ==
-                .OrderedDescending
+        orderedFood.sort { (food1, food2) -> Bool in
+            return food1.updated_at.compare(food2.updated_at as Date) ==
+                .orderedDescending
         }
         return orderedFood
     }
-    func foodSearch(search:String) -> [Food] {
+    func foodSearch(_ search:String) -> [Food] {
         if search.characters.count == 0 {
             return foods
         }
         var searchedFoods = [Food]()
         for f in foods {
-            if f.name.containsString(search) ||
-                f.foodDescription?.containsString(search) == true ||
-                f.local.containsString(search)
+            if f.name.contains(search) ||
+                f.foodDescription?.contains(search) == true ||
+                f.local.contains(search)
             {
                 searchedFoods.append(f)
             }
@@ -66,7 +68,7 @@ class FoodRepository:RepositoryProtocol {
     }
     
     func mediaPath() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         return paths[0];
     }
 }

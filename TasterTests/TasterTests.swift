@@ -1,9 +1,10 @@
 //
 //  TasterTests.swift
-//  TasterTests
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 23/10/15.
-//  Copyright © 2015 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import XCTest
@@ -28,7 +29,7 @@ class TasterTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

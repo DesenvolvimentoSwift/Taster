@@ -1,9 +1,10 @@
 //
 //  FoodRepository+Seeder.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 07/06/16.
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation

@@ -1,8 +1,10 @@
 //
 //  Food.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Copyright © 2015 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation
@@ -18,7 +20,7 @@ class Food {
     var mediaFile:String?
     var rating:Int?
     var favourite = false
-    var updated_at = NSDate()
+    var updated_at = Date()
     
     var location:CLLocationCoordinate2D?
     

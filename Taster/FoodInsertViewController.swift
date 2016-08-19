@@ -1,8 +1,10 @@
 //
 //  FoodInsertViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Copyright © 2015 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -16,26 +18,26 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     var rate:Int = 0 {
         didSet {
-            self.star1Button.selected = false
-            self.star2Button.selected = false
-            self.star3Button.selected = false
-            self.star4Button.selected = false
-            self.star5Button.selected = false
+            self.star1Button.isSelected = false
+            self.star2Button.isSelected = false
+            self.star3Button.isSelected = false
+            self.star4Button.isSelected = false
+            self.star5Button.isSelected = false
             
             if rate >= 1 {
-                self.star1Button.selected = true
+                self.star1Button.isSelected = true
             }
             if rate >= 2 {
-                self.star2Button.selected = true
+                self.star2Button.isSelected = true
             }
             if rate >= 3 {
-                self.star3Button.selected = true
+                self.star3Button.isSelected = true
             }
             if rate >= 4 {
-                self.star4Button.selected = true
+                self.star4Button.isSelected = true
             }
             if rate >= 5 {
-                self.star5Button.selected = true
+                self.star5Button.isSelected = true
             }
         }
     }
@@ -79,7 +81,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Associar o objeto à vista
         ingredientsLabel.addGestureRecognizer(tapRecog)
         // Permitir a interação com a etiqueta
-        ingredientsLabel.userInteractionEnabled = true
+        ingredientsLabel.isUserInteractionEnabled = true
         
     }
     
@@ -96,17 +98,17 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         self.rate = self.food?.rating ?? 0
         
         if let imagePath = self.food?.mediaFile {
-            let documentsPath = NSURL(fileURLWithPath: FoodRepository.repository.mediaPath())
+            let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
             
-            let filePath = documentsPath.URLByAppendingPathComponent(imagePath, isDirectory: false)
-            self.imageView.image = UIImage(named: filePath.path!)
+            let filePath = documentsPath.appendingPathComponent(imagePath, isDirectory: false)
+            self.imageView.image = UIImage(named: filePath.path)
         }
         else {
             self.imageView.image = UIImage(named: "dish_light")
         }
         
         if self.food != nil {
-            self.favouriteButton.selected = self.food!.favourite
+            self.favouriteButton.isSelected = self.food!.favourite
         }
 
     }
@@ -121,7 +123,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
      }
      */
     
-    @IBAction func starAction(sender: UIButton) {
+    @IBAction func starAction(_ sender: UIButton) {
         if sender == star1Button {
             self.rate = 1
         }
@@ -139,25 +141,25 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         }
     }
     
-    @IBAction func favouriteAction(sender: AnyObject) {
-        self.favouriteButton.selected = !self.favouriteButton.selected
+    @IBAction func favouriteAction(_ sender: AnyObject) {
+        self.favouriteButton.isSelected = !self.favouriteButton.isSelected
     }
     
-    @IBAction func saveAction(sender: AnyObject) {
+    @IBAction func saveAction(_ sender: AnyObject) {
         if self.food == nil {
             self.food = FoodRepository.repository.createFoodWithName(self.nameTextField.text! , local: self.localTextField.text!)
         }
-        self.food?.favourite = self.favouriteButton.selected
+        self.food?.favourite = self.favouriteButton.isSelected
         self.food?.rating = self.rate
         self.food?.foodDescription = self.descriptionTextView.text
         
         // Save image to path
         if let image = self.newImage {
-            let timestamp = Int(NSDate().timeIntervalSinceReferenceDate)
+            let timestamp = Int(Date().timeIntervalSinceReferenceDate)
             let imageFileName = "image-\(timestamp).png"
             let filePath = "\(FoodRepository.repository.mediaPath())/\(imageFileName)"
             
-            UIImagePNGRepresentation(image)?.writeToFile(filePath, atomically: true)
+            try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
             self.food?.mediaFile = imageFileName
         }
         
@@ -181,15 +183,15 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             }
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancelAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func pictureAction(sender: AnyObject) {
-        self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
+    @IBAction func pictureAction(_ sender: AnyObject) {
+        self.imageView.layer.borderColor = UIColor.white.cgColor
 //        UIView.animateWithDuration(3.0) {
         
             // Secção 6.2.1 - Animaçõe de vista
@@ -205,35 +207,35 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         anim.fromValue = 0.0
         anim.toValue = 10.0
         anim.duration = 5.0
-        self.imageView.layer.addAnimation(anim, forKey: "Anima")
+        self.imageView.layer.add(anim, forKey: "Anima")
         self.imageView.layer.borderWidth = 10.0
 
-        let alert = UIAlertController(title: "Image source", message: nil, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Image source", message: nil, preferredStyle: .actionSheet)
         
-        if UIImagePickerController.isCameraDeviceAvailable(.Rear) {
-            alert.addAction(UIAlertAction(title: "Câmara", style: .Default, handler: { (action) -> Void in
+        if UIImagePickerController.isCameraDeviceAvailable(.rear) {
+            alert.addAction(UIAlertAction(title: "Câmara", style: .default, handler: { (action) -> Void in
                 let cameraUI = UIImagePickerController()
-                cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+                cameraUI.sourceType = UIImagePickerControllerSourceType.camera
                 cameraUI.delegate = self
-                self.presentViewController(cameraUI, animated: true, completion: nil)
+                self.present(cameraUI, animated: true, completion: nil)
             }))
         }
-        alert.addAction(UIAlertAction(title: "Gallery", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (action) -> Void in
             let galleryUI = UIImagePickerController()
-            galleryUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary)!
+            galleryUI.mediaTypes = UIImagePickerController.availableMediaTypes(for: UIImagePickerControllerSourceType.photoLibrary)!
             galleryUI.delegate = self
-            self.presentViewController(galleryUI, animated: true, completion: nil)
+            self.present(galleryUI, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
-            UIView.animateWithDuration(3.0) {
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+            UIView.animate(withDuration: 3.0) {
                 self.imageView.layer.transform = CATransform3DIdentity
 
                 self.imageView.layer.borderWidth = 0.0
             }
             }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // From Apple Documentation
@@ -241,15 +243,15 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     // Call this method somewhere in your view controller setup code.
     func registerForKeyboardNotifications () {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FoodInsertViewController.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FoodInsertViewController.keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FoodInsertViewController.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FoodInsertViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardWasShown (notification: NSNotification) {
+    func keyboardWasShown (_ notification: Notification) {
         
-        let info : NSDictionary = notification.userInfo!
-        let keyboardSize = info.objectForKey(UIKeyboardFrameBeginUserInfoKey)?.CGRectValue.size
+        let info : NSDictionary = (notification as NSNotification).userInfo!
+        let keyboardSize = info.object(forKey: UIKeyboardFrameBeginUserInfoKey)?.cgRectValue.size
         
         let insets = UIEdgeInsetsMake(self.scrollView.contentInset.top, 0, keyboardSize!.height, 0)
         
@@ -259,24 +261,24 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
     }
     
-    func keyboardWillBeHidden (notification: NSNotification) {
+    func keyboardWillBeHidden (_ notification: Notification) {
         
         self.scrollView.contentInset = UIEdgeInsetsZero
         self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
         
     }
     
-    func textFieldDidBeginEditing(textField: UITextField)
+    func textFieldDidBeginEditing(_ textField: UITextField)
     {
         activeField = textField;
     }
     
-    func textFieldDidEndEditing(textField: UITextField)
+    func textFieldDidEndEditing(_ textField: UITextField)
     {
         activeField = nil;
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField {
             textField.resignFirstResponder()
         }
@@ -287,20 +289,20 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController,
-                                 didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                                 didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imageView.image = image
             self.newImage = image
         }
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 
-    func writeValueBack(value: CLLocationCoordinate2D?) {
+    func writeValueBack(_ value: CLLocationCoordinate2D?) {
         location = value
         let geocoder = CLGeocoder()
         let loc = CLLocation(latitude: location!.latitude, longitude: location!.longitude)
@@ -309,27 +311,27 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.localTextField.text = placemarks?.first?.locality
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? PickLocationViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? PickLocationViewController {
             controller.location = self.location
             print(self.location)
             controller.delegate = self
         }
     }
     
-    func tapIngredientsAction(regognizer: UITapGestureRecognizer) {
+    func tapIngredientsAction(_ regognizer: UITapGestureRecognizer) {
         // Controlador a mostrar com campo de texto
-        let alert = UIAlertController(title: "Ingredients", message: "Lista de ingredientes", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Ingredients", message: "Lista de ingredientes", preferredStyle: .alert)
         // Configurar o campo de texto
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = self.ingredientsLabel.text
         })
         // Ação quando o utilizador pressiona OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.ingredientsLabel.text = textField.text
         }))
         // Apresenta o controlador
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }

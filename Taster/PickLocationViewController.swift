@@ -1,8 +1,10 @@
 //
 //  PickLocationViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -10,7 +12,7 @@ import CoreLocation
 import MapKit
 
 protocol writeValueBackDelegate {
-    func writeValueBack(value: CLLocationCoordinate2D?)
+    func writeValueBack(_ value: CLLocationCoordinate2D?)
 }
 
 class PickLocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
@@ -25,24 +27,24 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
     
     var delegate: writeValueBackDelegate?
     
-    @IBAction func cancelLocation(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelLocation(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
         
     }
     
-    @IBAction func saveLocation(sender: UIButton) {
+    @IBAction func saveLocation(_ sender: UIButton) {
         if let loc = location {
             delegate?.writeValueBack(loc)
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
 
     }
     
     
-    @IBAction func didTapMap(sender: UITapGestureRecognizer) {
-        let tapPoint: CGPoint = sender.locationInView(map)
-        location = map.convertPoint(tapPoint, toCoordinateFromView: map)
+    @IBAction func didTapMap(_ sender: UITapGestureRecognizer) {
+        let tapPoint: CGPoint = sender.location(in: map)
+        location = map.convert(tapPoint, toCoordinateFrom: map)
 
         if (location?.latitude != annotation.coordinate.latitude || location?.longitude != annotation.coordinate.longitude) {
             map.removeAnnotation(annotation)
@@ -55,18 +57,18 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
     
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "identifier"
         var annotationView:MKPinAnnotationView?
         
-        if annotation.isKindOfClass(MKPointAnnotation) {
-            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+        if annotation.isKind(of: MKPointAnnotation.self) {
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
             
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 
                 annotationView!.canShowCallout = true
-                annotationView!.pinTintColor = UIColor.purpleColor()
+                annotationView!.pinTintColor = UIColor.purple
                 
             } else {
                 annotationView!.annotation = annotation
@@ -91,7 +93,7 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         
         if let loc = location {
@@ -111,13 +113,13 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         locationManager.startUpdatingLocation()
         
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locationObj = locations.last
         let coord = locationObj?.coordinate
         if let c = coord {

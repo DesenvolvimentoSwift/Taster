@@ -21,7 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         map.showsUserLocation = true
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         showFoodsOnMap()
     }
     
@@ -37,21 +37,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "identifier"
         var annotationView:MKPinAnnotationView?
         
-        if annotation.isKindOfClass(CustomPin) {
+        if annotation.isKind(of: CustomPin.self) {
             
-            annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
             
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 
                 annotationView!.canShowCallout = true
-                annotationView!.pinTintColor = UIColor.purpleColor()
+                annotationView!.pinTintColor = UIColor.purple
                 
-                let btn = UIButton(type: .DetailDisclosure)
+                let btn = UIButton(type: .detailDisclosure)
                 annotationView!.rightCalloutAccessoryView = btn
             } else {
                 annotationView!.annotation = annotation
@@ -64,14 +64,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation = view.annotation as! CustomPin
         food = annotation.food
-        self.performSegueWithIdentifier("mapFoodDetail", sender: annotation)
+        self.performSegue(withIdentifier: "mapFoodDetail", sender: annotation)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? FoodDetailViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? FoodDetailViewController {
             controller.food = food
         }
     }

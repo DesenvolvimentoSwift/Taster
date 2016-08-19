@@ -1,17 +1,19 @@
 //
 //  RepositoryProtocol.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Copyright © 2016 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import Foundation
 
 protocol RepositoryProtocol {
-    func createFoodWithName(name:String, local:String) -> Food
+    func createFoodWithName(_ name:String, local:String) -> Food
     func favouriteFood() -> [Food]
     func foodByDate() -> [Food]
-    func foodSearch(search:String) -> [Food]
+    func foodSearch(_ search:String) -> [Food]
     
     func mediaPath() -> String
 }

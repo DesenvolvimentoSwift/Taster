@@ -1,9 +1,10 @@
 //
 //  FoodListTableViewController.swift
-//  Taster
+//  pt.fca.Taster
 //
-//  Created by Luis Marcelino on 23/10/15.
-//  Copyright © 2015 Empresa Imaginada. All rights reserved.
+//  © 2016 Luis Marcelino e Catarina Silva
+//  Desenvolvimento em Swift para iOS
+//  FCA - Editora de Informática
 //
 
 import UIKit
@@ -15,13 +16,13 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerNib(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "foodTableCell")
+        self.tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "foodTableCell")
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.resultFood = FoodRepository.repository.foodSearch("")
@@ -35,25 +36,25 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultFood.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("foodTableCell", forIndexPath: indexPath) as! FoodTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "foodTableCell", for: indexPath) as! FoodTableViewCell
         
-        cell.food = resultFood[indexPath.row]
+        cell.food = resultFood[(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let food = resultFood[indexPath.row]
-        self.performSegueWithIdentifier("foodDetailSegue", sender: food)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let food = resultFood[(indexPath as NSIndexPath).row]
+        self.performSegue(withIdentifier: "foodDetailSegue", sender: food)
     }
     
     /*
@@ -93,8 +94,8 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let controller = segue.destinationViewController as? FoodDetailViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? FoodDetailViewController {
             if let food = sender as? Food {
                 controller.food = food
             }
@@ -102,7 +103,7 @@ class FoodListTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // MARK: - UISearchBarDelegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.resultFood = FoodRepository.repository.foodSearch(searchBar.text!)
         self.tableView.reloadData()
         searchBar.resignFirstResponder()
