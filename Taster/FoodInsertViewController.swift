@@ -249,22 +249,24 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func keyboardWasShown (_ notification: Notification) {
-        
-        let info : NSDictionary = (notification as NSNotification).userInfo!
-        let keyboardSize = info.object(forKey: UIKeyboardFrameBeginUserInfoKey)?.cgRectValue.size
-        
-        let insets = UIEdgeInsetsMake(self.scrollView.contentInset.top, 0, keyboardSize!.height, 0)
-        
-        self.scrollView.contentInset = insets
-        self.scrollView.scrollIndicatorInsets = insets
-        
-        
+        if let userInfo = notification.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                let insets = UIEdgeInsetsMake(self.scrollView.contentInset.top, 0, keyboardSize.height, 0)
+                
+                self.scrollView.contentInset = insets
+                self.scrollView.scrollIndicatorInsets = insets
+            } else {
+                // no UIKeyboardFrameBeginUserInfoKey entry in userInfo
+            }
+        } else {
+            // no userInfo dictionary in notification
+        }
     }
     
     func keyboardWillBeHidden (_ notification: Notification) {
         
-        self.scrollView.contentInset = UIEdgeInsetsZero
-        self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+        self.scrollView.contentInset = UIEdgeInsets.zero
+        self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
         
     }
     

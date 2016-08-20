@@ -11,11 +11,11 @@ import Foundation
 
 extension RepositoryProtocol {
     func populate() {
-        FoodRepository.repository.createFoodWithName("Costeta", local: "Mirandela")
-        FoodRepository.repository.createFoodWithName("Francesinha", local: "Porto")
-        FoodRepository.repository.createFoodWithName("Ovos moles", local: "Aveiro")
-        FoodRepository.repository.createFoodWithName("Brisas do Liz", local: "Leiria")
-        FoodRepository.repository.createFoodWithName("Chanfana", local: "Santarém")
-        FoodRepository.repository.createFoodWithName("D. Rodrigo", local: "Faro")
+        let _ = FoodRepository.repository.createFoodWithName("Costeta", local: "Mirandela")
+        let _ = FoodRepository.repository.createFoodWithName("Francesinha", local: "Porto")
+        let _ = FoodRepository.repository.createFoodWithName("Ovos moles", local: "Aveiro")
+        let _ = FoodRepository.repository.createFoodWithName("Brisas do Liz", local: "Leiria")
+        let _ = FoodRepository.repository.createFoodWithName("Chanfana", local: "Santarém")
+        let _ = FoodRepository.repository.createFoodWithName("D. Rodrigo", local: "Faro")
     }
 }

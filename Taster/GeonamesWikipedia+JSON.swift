@@ -20,7 +20,7 @@ extension GeonamesWikipedia {
                         if let lng = jsonObj["lng"] as? Double {
                             let url = URL(string:"http://" + (jsonObj["wikipediaUrl"]! as! String))
                             let loc = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                            return GeonamesWikipedia(title: title, summary: summary, feature: feature, url: url as NSURL?, coordinate: loc)
+                            return GeonamesWikipedia(title: title, summary: summary, feature: feature, url: url as URL?, coordinate: loc)
                         }
                     }
                 }
