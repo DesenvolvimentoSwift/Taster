@@ -52,7 +52,7 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     func refreshViews() {
         if let imagePath = self.food?.mediaFile {
-            let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
+            let documentsPath = URL(fileURLWithPath: FoodRepository.mediaPath())
             
             let filePath = documentsPath.appendingPathComponent(imagePath, isDirectory: false)
             self.imageView.image = UIImage(named: filePath.path)

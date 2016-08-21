@@ -98,7 +98,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         self.rate = self.food?.rating ?? 0
         
         if let imagePath = self.food?.mediaFile {
-            let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
+            let documentsPath = URL(fileURLWithPath: FoodRepository.mediaPath())
             
             let filePath = documentsPath.appendingPathComponent(imagePath, isDirectory: false)
             self.imageView.image = UIImage(named: filePath.path)
@@ -157,7 +157,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         if let image = self.newImage {
             let timestamp = Int(Date().timeIntervalSinceReferenceDate)
             let imageFileName = "image-\(timestamp).png"
-            let filePath = "\(FoodRepository.repository.mediaPath())/\(imageFileName)"
+            let filePath = "\(FoodRepository.mediaPath())/\(imageFileName)"
             
             try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
             self.food?.mediaFile = imageFileName

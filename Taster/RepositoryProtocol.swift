@@ -15,5 +15,5 @@ protocol RepositoryProtocol {
     func foodByDate() -> [Food]
     func foodSearch(_ search:String) -> [Food]
     
-    func mediaPath() -> String
+    static func mediaPath() -> String
 }

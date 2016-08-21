@@ -24,7 +24,7 @@ class FoodTableViewCell: UITableViewCell {
             self.foodNameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
             if let imageFileName = self.food?.mediaFile {
-                let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
+                let documentsPath = URL(fileURLWithPath: FoodRepository.mediaPath())
                 
                 let filePath = documentsPath.appendingPathComponent(imageFileName, isDirectory: false)
                 let path = filePath.path

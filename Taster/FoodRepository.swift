@@ -67,7 +67,7 @@ class FoodRepository:RepositoryProtocol {
         
     }
     
-    func mediaPath() -> String {
+    static func mediaPath() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         return paths[0];
     }

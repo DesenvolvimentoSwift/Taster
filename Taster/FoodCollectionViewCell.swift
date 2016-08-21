@@ -20,7 +20,7 @@ class FoodCollectionViewCell: UICollectionViewCell {
             self.nameLabel.text = self.food?.name
             self.locationLabel.text = self.food?.local
             if let imageStr = self.food?.mediaFile {
-                let documentsPath = URL(fileURLWithPath: FoodRepository.repository.mediaPath())
+                let documentsPath = URL(fileURLWithPath: FoodRepository.mediaPath())
                 
                 let filePath = documentsPath.appendingPathComponent(imageStr, isDirectory: false)
                 let path = filePath.path
