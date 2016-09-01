@@ -11,10 +11,6 @@ import UIKit
 import CoreLocation
 import MapKit
 
-protocol writeValueBackDelegate {
-    func writeValueBack(_ value: CLLocationCoordinate2D?)
-}
-
 class PickLocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     
@@ -25,7 +21,7 @@ class PickLocationViewController: UIViewController, CLLocationManagerDelegate, M
     var location:CLLocationCoordinate2D?
     var annotation = MKPointAnnotation()
     
-    var delegate: writeValueBackDelegate?
+    var delegate: WriteValueBackDelegate?
     
     @IBAction func cancelLocation(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

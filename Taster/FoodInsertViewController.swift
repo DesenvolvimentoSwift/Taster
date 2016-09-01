@@ -10,7 +10,7 @@
 import UIKit
 import CoreLocation
 
-class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, writeValueBackDelegate {
+class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, WriteValueBackDelegate {
     
     var food:Food?
     
