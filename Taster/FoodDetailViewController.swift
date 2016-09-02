@@ -30,15 +30,22 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
+    // Código para a secção 6.3
+    var myPlayer: AVAudioPlayer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         refreshViews()
         
-//        if let filePath = NSBundle.mainBundle().pathForResource("cup", ofType: "mp3") {
-//            myPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: filePath))
-//        }
+        /////////////////////////////////
+        //
+        // Código para a secção 6.3
+        
+        if let filePath = Bundle.main.path(forResource: "cup", ofType: "mp3") {
+            myPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: filePath))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,6 +109,13 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
         if self.food != nil {
             self.food!.favourite = !self.food!.favourite
             self.favouriteButton.image = self.food!.favourite ? UIImage(named: "heart_filled") : UIImage(named: "heart")
+            
+            /////////////////////////////////
+            //
+            // Código para a secção 6.3
+            
+            myPlayer?.play()
+
         }
     }
     

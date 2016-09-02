@@ -321,6 +321,10 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
         }
     }
     
+    /////////////////////////////////
+    //
+    // Código para a secção 6.1.1.1
+    
     func tapIngredientsAction(_ regognizer: UITapGestureRecognizer) {
         // Controlador a mostrar com campo de texto
         let alert = UIAlertController(title: "Ingredients", message: "Lista de ingredientes", preferredStyle: .alert)
