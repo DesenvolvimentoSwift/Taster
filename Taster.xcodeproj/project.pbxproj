@@ -15,6 +15,9 @@
 		0C283A411CEDD5DC0080DA47 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C283A401CEDD5DC0080DA47 /* RepositoryProtocol.swift */; };
 		0C491EEF1D7881C900C117EB /* WriteValueBackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C491EEE1D7881C900C117EB /* WriteValueBackDelegate.swift */; };
 		0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */; };
+		177CAFAB1D589B840072D683 /* GeonamesWikipedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190BF1D4908DD003C3F16 /* GeonamesWikipedia.swift */; };
+		177CAFAC1D589BC80072D683 /* GeonamesWikipedia+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F190C31D4909F6003C3F16 /* GeonamesWikipedia+JSON.swift */; };
+		177CAFAE1D589CB00072D683 /* GeonamesWikiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177CAFAD1D589CB00072D683 /* GeonamesWikiTest.swift */; };
 		64042BFC1D37B8590097281F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64042BFB1D37B8590097281F /* AVFoundation.framework */; };
 		640759441C77994A00E8301C /* RecentFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640759431C77994A00E8301C /* RecentFoodTableViewController.swift */; };
 		640DD2091BDAB5A60053E2BE /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DD2081BDAB5A60053E2BE /* FoodDetailViewController.swift */; };
@@ -74,6 +77,7 @@
 		0C283A401CEDD5DC0080DA47 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 		0C491EEE1D7881C900C117EB /* WriteValueBackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteValueBackDelegate.swift; sourceTree = "<group>"; };
 		0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		177CAFAD1D589CB00072D683 /* GeonamesWikiTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesWikiTest.swift; sourceTree = "<group>"; };
 		64042BFB1D37B8590097281F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		64042BFD1D37BD980097281F /* cup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cup.mp3; sourceTree = "<group>"; };
 		64042BFE1D37BD980097281F /* cup.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = cup.aiff; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			children = (
 				64EFBE471BDA7AE400408A50 /* TasterTests.swift */,
 				64EFBE491BDA7AE400408A50 /* Info.plist */,
+				177CAFAD1D589CB00072D683 /* GeonamesWikiTest.swift */,
 			);
 			path = TasterTests;
 			sourceTree = "<group>";
@@ -438,6 +443,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177CAFAE1D589CB00072D683 /* GeonamesWikiTest.swift in Sources */,
+				177CAFAB1D589B840072D683 /* GeonamesWikipedia.swift in Sources */,
+				177CAFAC1D589BC80072D683 /* GeonamesWikipedia+JSON.swift in Sources */,
 				64EFBE481BDA7AE400408A50 /* TasterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
