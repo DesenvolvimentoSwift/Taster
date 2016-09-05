@@ -22,7 +22,7 @@ class GeonamesClient {
                         if let geonamesArray = jsonDic["geonames"] as? [[String:AnyObject]] {
                             var wikiEntries = [GeonamesWikipedia]()
                             for jsonObj in geonamesArray {
-                                if let entry = GeonamesWikipedia.parseJSON(jsonObj) {
+                                if let entry = GeonamesWikipedia.parse(json:jsonObj) {
                                     wikiEntries.append(entry)
                                 }
                             }

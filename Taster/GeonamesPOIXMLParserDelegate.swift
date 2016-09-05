@@ -49,7 +49,7 @@ class GeonamesPOIXMLParserDelegate: NSObject, XMLParserDelegate {
                     }
                 }
             }
-            values = [:]
+            values = [:] // limpar os valores extraidos
         }
         else {
             currentTag = nil
