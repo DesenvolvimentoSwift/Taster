@@ -32,6 +32,7 @@
 		648F35DF1BE120560028D6C5 /* heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35DE1BE120560028D6C5 /* heart.pdf */; };
 		648F35EA1BE12B930028D6C5 /* heart_filled.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 648F35E91BE12B930028D6C5 /* heart_filled.pdf */; };
 		64B184E71D49FBE700579E10 /* GeonamesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B184E61D49FBE700579E10 /* GeonamesClient.swift */; };
+		64BA52051D7D8EE200A328BD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA52041D7D8EE200A328BD /* Social.framework */; };
 		64D182111C734AF30052D6EE /* FoodCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */; };
 		64D182131C734B4D0052D6EE /* FoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182121C734B4D0052D6EE /* FoodRepository.swift */; };
 		64D182151C734BD00052D6EE /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */; };
@@ -92,6 +93,8 @@
 		648F35DE1BE120560028D6C5 /* heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart.pdf; sourceTree = "<group>"; };
 		648F35E91BE12B930028D6C5 /* heart_filled.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = heart_filled.pdf; sourceTree = "<group>"; };
 		64B184E61D49FBE700579E10 /* GeonamesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeonamesClient.swift; sourceTree = "<group>"; };
+		64BA52021D7D850C00A328BD /* Taster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Taster.entitlements; sourceTree = "<group>"; };
+		64BA52041D7D8EE200A328BD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		64D182101C734AF30052D6EE /* FoodCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewController.swift; sourceTree = "<group>"; };
 		64D182121C734B4D0052D6EE /* FoodRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodRepository.swift; sourceTree = "<group>"; };
 		64D182141C734BD00052D6EE /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64BA52051D7D8EE200A328BD /* Social.framework in Frameworks */,
 				64042BFC1D37B8590097281F /* AVFoundation.framework in Frameworks */,
 				0C05D64F1CB6BD8B005DBFC0 /* CoreLocation.framework in Frameworks */,
 				0C7E3BE61BDEB77E003AF8E4 /* MapKit.framework in Frameworks */,
@@ -176,6 +180,25 @@
 			name = imgs;
 			sourceTree = "<group>";
 		};
+		64BA52011D7D846500A328BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64042BFB1D37B8590097281F /* AVFoundation.framework */,
+				0C05D64E1CB6BD8B005DBFC0 /* CoreLocation.framework */,
+				0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		64BA52031D7D8EE100A328BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64BA52041D7D8EE200A328BD /* Social.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		64E737611C7381A700E4D492 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,13 +238,11 @@
 		64EFBE241BDA7AE400408A50 = {
 			isa = PBXGroup;
 			children = (
-				64042BFB1D37B8590097281F /* AVFoundation.framework */,
-				0C05D64E1CB6BD8B005DBFC0 /* CoreLocation.framework */,
-				0C7E3BE51BDEB77E003AF8E4 /* MapKit.framework */,
 				64EFBE2F1BDA7AE400408A50 /* Taster */,
 				64EFBE461BDA7AE400408A50 /* TasterTests */,
 				64EFBE511BDA7AE400408A50 /* TasterUITests */,
 				64EFBE2E1BDA7AE400408A50 /* Products */,
+				64BA52031D7D8EE100A328BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +259,8 @@
 		64EFBE2F1BDA7AE400408A50 /* Taster */ = {
 			isa = PBXGroup;
 			children = (
+				64BA52021D7D850C00A328BD /* Taster.entitlements */,
+				64BA52011D7D846500A328BD /* Frameworks */,
 				64042C011D37BDA90097281F /* sounds */,
 				648F35E01BE120680028D6C5 /* imgs */,
 				64EFBE301BDA7AE400408A50 /* AppDelegate.swift */,
@@ -340,6 +363,11 @@
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = E9QU59JGLF;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					64EFBE421BDA7AE400408A50 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -583,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Taster/Taster.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = E9QU59JGLF;
 				INFOPLIST_FILE = Taster/Info.plist;
@@ -597,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Taster/Taster.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = E9QU59JGLF;
 				INFOPLIST_FILE = Taster/Info.plist;

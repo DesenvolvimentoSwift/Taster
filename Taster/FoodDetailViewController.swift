@@ -9,6 +9,7 @@
 
 import UIKit
 import AVFoundation
+import Social
 
 class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
     
@@ -132,4 +133,63 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
 
     }
     
+    /////////////////////////////////
+    //
+    // Código para a secção 8.3
+    
+    @IBAction func shareOnSocialNet(_ sender: AnyObject) {
+        /*
+        let actionSheet = UIAlertController(title: "", message: "Share your food", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let facebookAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.default) { (action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+                if let facebookVC = SLComposeViewController(forServiceType:
+                    SLServiceTypeFacebook) {
+                    // Com conta ativa
+                    if let name = self.nameLabel.text {
+                        facebookVC.setInitialText("Nice food: \(name)")
+                    }
+                    self.present(facebookVC, animated: true, completion: nil)
+                }
+            } else {
+                // Sem conta ativa
+                self.sharingError(message: "Your must first log on to your Facebook account.")
+            }
+        }
+        let twitterAction = UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.default) { (action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+                if let twitterVC = SLComposeViewController(forServiceType:SLServiceTypeTwitter) {
+                    if let name = self.nameLabel.text {
+                        twitterVC.setInitialText("Nice food: \(name)")
+                    }
+                    self.present(twitterVC, animated: true, completion: nil)
+                }
+            } else {
+                // Sem conta ativa
+                self.sharingError(message: "Your must first log on to your Twitter account.")
+            }
+        }
+        let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) { (action) -> Void in
+        }
+        actionSheet.addAction(facebookAction)
+        actionSheet.addAction(twitterAction)
+        actionSheet.addAction(dismissAction)
+        present(actionSheet, animated: true, completion: nil)
+         */
+        guard let name = nameLabel.text else {
+            sharingError(message: "Food has no name")
+            return
+        }
+        guard let image = imageView.image else {
+            sharingError(message: "Food has no image")
+            return
+        }
+        let viewController = UIActivityViewController(activityItems: [name, image], applicationActivities: nil)
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    func sharingError (message:String) -> Void {
+        let alert = UIAlertController(title: "Sharing error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated:  true, completion:  nil)
+    }
 }

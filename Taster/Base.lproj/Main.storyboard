@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZPX-Vz-Mbg" id="JyX-BH-Khz">
-                                    <frame key="frameInset" width="342" height="59"/>
+                                    <frame key="frameInset" width="342" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dno-ai-Gdt">
@@ -731,6 +731,11 @@
                             <barButtonItem systemItem="edit" id="I81-Ty-3q2">
                                 <connections>
                                     <segue destination="lY3-TJ-ca6" kind="presentation" modalPresentationStyle="fullScreen" id="EXh-Xv-05r"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="gtd-Dz-U62">
+                                <connections>
+                                    <action selector="shareOnSocialNet:" destination="c3n-f8-d85" id="qM4-Wb-0Ww"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
