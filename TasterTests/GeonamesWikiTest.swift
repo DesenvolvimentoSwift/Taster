@@ -23,9 +23,9 @@ class GeonamesWikiTest: XCTestCase {
     }
     
     func testJsonParse() {
-        if let data = self.jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
-            if let jsonObj = (try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)) as? [String:AnyObject] {
-                let geoWiki = GeonamesWikipedia.parseJSON(jsonObj)
+        if let data = self.jsonString.data(using: String.Encoding.utf8) {
+            if let jsonObj = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)) as? [String:AnyObject] {
+                let geoWiki = GeonamesWikipedia.parse(json:jsonObj)
                 XCTAssertNotNil(geoWiki)
                 XCTAssertEqual("Arco da Rua Augusta", geoWiki?.title)
             }
@@ -37,7 +37,7 @@ class GeonamesWikiTest: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
             self.testJsonParse()
         }
