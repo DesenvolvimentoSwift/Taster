@@ -26,12 +26,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func showFoodsOnMap () {
-        var pin: CustomPin
         //map.removeAnnotations(self.map.annotations)
         for f in FoodRepository.repository.foods {
             if let loc = f.location {
                 map.setRegion(MKCoordinateRegionMake(loc, MKCoordinateSpanMake(1, 1)), animated: true)
-                pin = CustomPin(coordinate: loc, food:f, title: f.name, subtitle: " ")
+                let pin = CustomPin(coordinate: loc, food:f, title: f.name, subtitle: " ")
                 self.map.addAnnotation(pin)
             }
         }

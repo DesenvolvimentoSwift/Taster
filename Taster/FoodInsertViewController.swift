@@ -192,15 +192,17 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     @IBAction func pictureAction(_ sender: AnyObject) {
         self.imageView.layer.borderColor = UIColor.white.cgColor
-//        UIView.animateWithDuration(3.0) {
+        
+        
+        UIView.animate(withDuration: 3.0) {
         
             // Secção 6.2.1 - Animaçõe de vista
-//            self.imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+//            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
             
             // Secção 6.2.2 - Animação de camada
-//            self.imageView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2.0), 1, 0, 0)
+            self.imageView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2.0), 1, 0, 0)
         
-//        }
+        }
 
         // Secção 6.2.2 - Animação explícita
         let anim = CABasicAnimation(keyPath: "borderWidth")
