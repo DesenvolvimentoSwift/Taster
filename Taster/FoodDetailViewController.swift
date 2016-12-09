@@ -152,7 +152,7 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
                 }
             } else {
                 // Sem conta ativa
-                self.sharingError(message: "Your must first log on to your Facebook account.")
+                self.sharingError(message: "You must first log on to your Facebook account.")
             }
         }
         let twitterAction = UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.default) { (action) -> Void in
@@ -165,7 +165,7 @@ class FoodDetailViewController: UIViewController, AVAudioPlayerDelegate {
                 }
             } else {
                 // Sem conta ativa
-                self.sharingError(message: "Your must first log on to your Twitter account.")
+                self.sharingError(message: "You must first log on to your Twitter account.")
             }
         }
         let dismissAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel) { (action) -> Void in
