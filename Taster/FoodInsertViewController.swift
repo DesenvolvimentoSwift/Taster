@@ -159,7 +159,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
             let imageFileName = "image-\(timestamp).png"
             let filePath = "\(FoodRepository.mediaPath())/\(imageFileName)"
             
-            try? UIImagePNGRepresentation(image)?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
+            try? UIImageJPEGRepresentation(image, 0.5)?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
             self.food?.mediaFile = imageFileName
         }
         
@@ -200,7 +200,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
 //            self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
             
             // Secção 6.2.2 - Animação de camada
-            self.imageView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2.0), 1, 0, 0)
+//            self.imageView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/2.0), 1, 0, 0)
         
         }
 
