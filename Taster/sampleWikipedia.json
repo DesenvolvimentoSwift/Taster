@@ -1,0 +1,68 @@
+{
+    "geonames": [
+                 {
+                 "summary": "Arco do Triunfo, Arco Triunfal, Arco do Triunfo da Rua Augusta é um arco situado na parte Norte da Praça do Comércio, sobre a Rua Augusta, em Lisboa, Portugal. A sua construção começou após o terramoto de 1755, mais concretamente em 1775, mas esta primeira versão, que poderá não ter sido concluída, (...)",
+                 "elevation": 12,
+                 "feature": "landmark",
+                 "lng": -9.1368,
+                 "distance": "0.0216",
+                 "countryCode": "PT",
+                 "rank": 67,
+                 "lang": "pt",
+                 "title": "Arco da Rua Augusta",
+                 "lat": 38.7084,
+                 "wikipediaUrl": "pt.wikipedia.org/wiki/Arco_da_Rua_Augusta"
+                 },
+                 {
+                 "summary": "A Rua Augusta é uma famosa rua da baixa de Lisboa, em Portugal, que começando no famoso arco triunfal, liga a Praça do Comércio, à Praça do Rossio. Homenageia a Augusta figura do rei D. José I. Tem elevada concentração de comércio, já que toda a rua é ladeada por diversas lojas, muitas delas de (...)",
+                 "elevation": 12,
+                 "feature": "landmark",
+                 "lng": -9.1368,
+                 "distance": "0.0216",
+                 "rank": 70,
+                 "lang": "pt",
+                 "title": "Rua Augusta (Lisboa)",
+                 "lat": 38.7084,
+                 "wikipediaUrl": "pt.wikipedia.org/wiki/Rua_Augusta_%28Lisboa%29"
+                 },
+                 {
+                 "summary": "São Nicolau é uma antiga freguesia portuguesa do concelho de Lisboa, com 0,25 km² de área e 1 231 habitantes (2011). Densidade: 4 924 hab/km². Era uma das 20 freguesias de Portugal com menor extensão territorial,Conclusão com base nos dados divulgados pela Associação Nacional dos Municípios (...)",
+                 "elevation": 12,
+                 "geoNameId": 8012497,
+                 "lng": -9.137,
+                 "distance": "0.0309",
+                 "countryCode": "PT",
+                 "rank": 83,
+                 "lang": "pt",
+                 "title": "São Nicolau (Lisboa)",
+                 "lat": 38.708,
+                 "wikipediaUrl": "pt.wikipedia.org/wiki/S%C3%A3o_Nicolau_%28Lisboa%29"
+                 },
+                 {
+                 "summary": "A Praça do Comércio, mais conhecida por Terreiro do Paço, é uma praça da Baixa de Lisboa situada junto ao rio Tejo, na zona que foi o local do palácio dos reis de Portugal durante cerca de dois séculos. É uma das maiores praças da Europa, com cerca de m² (180m x 200m) (...)",
+                 "elevation": 10,
+                 "geoNameId": 6930110,
+                 "feature": "landmark",
+                 "lng": -9.13638,
+                 "distance": "0.0656",
+                 "countryCode": "PT",
+                 "rank": 89,
+                 "lang": "pt",
+                 "title": "Praça do Comércio",
+                 "lat": 38.7077,
+                 "wikipediaUrl": "pt.wikipedia.org/wiki/Pra%C3%A7a_do_Com%C3%A9rcio"
+                 },
+                 {
+                 "summary": "O Museu do Design e da Moda ou Mude - encontra-se actualmente na Rua Augusta nº24, no antigo edifício do BNU. Considerada uma das mais importantes colecções de design e de moda a nível internacional, foi adquirida, em 2002, pela Câmara Municipal de Lisboa (...)",
+                 "elevation": 20,
+                 "feature": "landmark",
+                 "lng": -9.137039,
+                 "distance": "0.1117",
+                 "rank": 29,
+                 "lang": "pt",
+                 "title": "Museu do Design e da Moda",
+                 "lat": 38.709189,
+                 "wikipediaUrl": "pt.wikipedia.org/wiki/Museu_do_Design_e_da_Moda"
+                 }
+                 ]
+}
