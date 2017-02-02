@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Inicialização antes de exibir a aplicação ao utilizador.
-        FoodRepository.repository.populate()
+        ///FoodRepository.repository.populate()
         
         return true
     }
