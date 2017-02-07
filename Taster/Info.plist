@@ -63,5 +63,6 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Take a picture to your food.</string>
+	<key>ITSAppUsesNonExemptEncryption</key><false/>
 </dict>
 </plist>
