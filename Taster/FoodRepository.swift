@@ -67,6 +67,23 @@ class FoodRepository:RepositoryProtocol {
         
     }
     
+    func saveFoods() {
+        let path = foodPath().path
+        NSKeyedArchiver.archiveRootObject(foods, toFile: path)
+    }
+    
+    func getFoods(){
+        let path = foodPath().path
+        if let newData = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [Food] {
+            foods = newData
+        }
+    }
+
+    private func foodPath() -> URL {
+        let documentsPath = URL(fileURLWithPath:NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0])
+        return documentsPath.appendingPathComponent("Food.data", isDirectory: false)
+    }
+
     static func mediaPath() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         return paths[0];

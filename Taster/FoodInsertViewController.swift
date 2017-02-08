@@ -182,7 +182,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 
             }
         }
-        
+        FoodRepository.repository.saveFoods()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -318,7 +318,7 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? PickLocationViewController {
             controller.location = self.location
-            print(self.location)
+            print(self.location!)
             controller.delegate = self
         }
     }
