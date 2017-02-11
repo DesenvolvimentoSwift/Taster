@@ -318,7 +318,6 @@ class FoodInsertViewController: UIViewController, UITextFieldDelegate, UIImagePi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? PickLocationViewController {
             controller.location = self.location
-            print(self.location!)
             controller.delegate = self
         }
     }
